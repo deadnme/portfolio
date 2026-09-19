@@ -5,9 +5,9 @@
 window.PORTFOLIO_DATA = {
   featured: {
     slug: 'twitch-emote-no-restart',
-    version: '2.5.1',
+    version: '2.6.0',
     license: 'GPL-3.0',
-    loc: 1378,
+    loc: 1925,
     dependencies: 0,
     repo: 'https://github.com/deadnme/Twitch-Emote-No-Restart',
     greasyfork: 'https://greasyfork.org/en/scripts/595615-twitch-emote-no-restart',
