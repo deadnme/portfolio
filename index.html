@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean Lennard Orias | Cloud Support & Infrastructure Portfolio</title>
+  <meta
+    name="description"
+    content="Portfolio of Sean Lennard Orias, a BSIT student from the Philippines with server administration internship experience targeting cloud support, systems administration, and infrastructure support roles."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #09111b;
+      --bg-soft: #101b2a;
+      --panel: rgba(14, 26, 40, 0.82);
+      --panel-strong: rgba(18, 33, 51, 0.94);
+      --line: rgba(129, 177, 255, 0.18);
+      --line-strong: rgba(120, 213, 199, 0.35);
+      --text: #f4f8ff;
+      --muted: #9db0c7;
+      --accent: #78d5c7;
+      --accent-strong: #7ea9ff;
+      --accent-warm: #ffc670;
+      --shadow: 0 28px 80px rgba(2, 7, 16, 0.45);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "IBM Plex Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(126, 169, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(120, 213, 199, 0.16), transparent 22%),
+        linear-gradient(180deg, #07101a 0%, #09111b 35%, #06101a 100%);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(126, 169, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(126, 169, 255, 0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 92%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 16, 26, 0.75);
+      border-bottom: 1px solid rgba(126, 169, 255, 0.1);
+    }
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 0.95rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      color: #06101a;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 14px 30px rgba(126, 169, 255, 0.25);
+    }
+
+    .brand-copy strong,
+    .section-heading h2,
+    .hero-copy h1,
+    .card h3,
+    .timeline-card h3,
+    .project-card h3,
+    .cert-card h3,
+    .contact-card h3,
+    .roadmap-card h3,
+    .signal h2 {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 1rem;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .card,
+    .timeline-card,
+    .project-card,
+    .cert-card,
+    .contact-card,
+    .roadmap-card,
+    .signal {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 2.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -10%;
+      top: -15%;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(126, 169, 255, 0.22), transparent 72%);
+      pointer-events: none;
+    }
+
+    .eyebrow,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(120, 213, 199, 0.24);
+      border-radius: 999px;
+      background: rgba(120, 213, 199, 0.08);
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      line-height: 0.95;
+      margin-bottom: 1.1rem;
+      max-width: 12ch;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+      color: var(--accent-strong);
+    }
+
+    .hero-lead {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      list-style: none;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-meta li {
+      padding: 0.58rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 48px;
+      padding: 0.8rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #06101a;
+      background: linear-gradient(135deg, var(--accent), #a8ebc8);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(126, 169, 255, 0.18);
+      color: var(--text);
+    }
+
+    .hero-note {
+      color: var(--muted);
+      font-size: 0.93rem;
+      max-width: 58ch;
+    }
+
+    .hero-panel {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      justify-content: flex-start;
+      align-self: start;
+    }
+
+    .portrait-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(126, 169, 255, 0.25), rgba(120, 213, 199, 0.08));
+      min-height: 350px;
+    }
+
+    .portrait-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(6, 16, 26, 0.78) 100%);
+      z-index: 1;
+    }
+
+    .portrait-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .portrait-caption {
+      position: absolute;
+      inset: auto 1rem 1rem 1rem;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+
+    .portrait-caption strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .portrait-caption span {
+      color: #d7e4f8;
+      font-size: 0.85rem;
+    }
+
+    .status-chip {
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 198, 112, 0.16);
+      border: 1px solid rgba(255, 198, 112, 0.28);
+      color: var(--accent-warm);
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .hero-stats .stat:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    section {
+      padding: 1.25rem 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .about-grid {
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    }
+
+    .card {
+      padding: 1.5rem;
+    }
+
+    .card p + p {
+      margin-top: 0.9rem;
+    }
+
+    .key-points {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.1rem;
+    }
+
+    .key-points li {
+      display: flex;
+      gap: 0.8rem;
+      color: var(--muted);
+    }
+
+    .key-points i {
+      margin-top: 0.25rem;
+      color: var(--accent);
+    }
+
+    .signal {
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signal::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(120, 213, 199, 0.22), transparent 68%);
+    }
+
+    .signal h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .signal p {
+      color: var(--muted);
+      max-width: 30ch;
+      margin-bottom: 1rem;
+    }
+
+    .signal ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .signal li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      color: var(--muted);
+    }
+
+    .signal li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .timeline-card {
+      padding: 1.6rem;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: start;
+    }
+
+    .timeline-header p,
+    .timeline-card p,
+    .project-card p,
+    .roadmap-card p,
+    .cert-card p,
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .timeline-badge {
+      display: inline-flex;
+      padding: 0.42rem 0.72rem;
+      border-radius: 999px;
+      background: rgba(126, 169, 255, 0.12);
+      border: 1px solid rgba(126, 169, 255, 0.2);
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .responsibility-list,
+    .tag-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .responsibility-list {
+      margin: 1rem 0 1.15rem;
+    }
+
+    .responsibility-list li,
+    .tag-list li {
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #d8e6f8;
+      font-size: 0.88rem;
+    }
+
+    .tools-grid,
+    .projects-grid,
+    .roadmap-grid,
+    .cert-grid,
+    .contact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card h3,
+    .timeline-card h3,
+    .project-card h3,
+    .roadmap-card h3,
+    .cert-card h3,
+    .contact-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .tool-card {
+      min-height: 100%;
+    }
+
+    .tool-card .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, rgba(126, 169, 255, 0.18), rgba(120, 213, 199, 0.16));
+      color: var(--accent);
+      font-size: 1.25rem;
+    }
+
+    .project-card,
+    .roadmap-card,
+    .cert-card,
+    .contact-card {
+      padding: 1.5rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-links,
+    .cert-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .inline-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .roadmap-card .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .status-progress {
+      background: rgba(126, 169, 255, 0.12);
+      border: 1px solid rgba(126, 169, 255, 0.18);
+      color: var(--accent-strong);
+    }
+
+    .status-planned {
+      background: rgba(255, 198, 112, 0.12);
+      border: 1px solid rgba(255, 198, 112, 0.2);
+      color: var(--accent-warm);
+    }
+
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cert-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .cert-meta span {
+      padding: 0.4rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .btn-placeholder {
+      opacity: 0.72;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .contact-card i {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-card a {
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .site-footer {
+      padding: 1.5rem 0 2.5rem;
+      color: var(--muted);
+    }
+
+    .footer-shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-shell,
+      .about-grid,
+      .tools-grid,
+      .projects-grid,
+      .roadmap-grid,
+      .cert-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      .hero-copy h1 {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-shell,
+      .footer-shell,
+      .section-heading,
+      .timeline-header,
+      .portrait-caption {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 0.8rem;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .card,
+      .timeline-card,
+      .project-card,
+      .roadmap-card,
+      .cert-card,
+      .contact-card,
+      .signal {
+        border-radius: 22px;
+      }
+
+      .hero-copy,
+      .timeline-card,
+      .project-card,
+      .roadmap-card,
+      .cert-card,
+      .contact-card,
+      .card,
+      .signal {
+        padding: 1.25rem;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-panel {
+        gap: 0.75rem;
+      }
+
+      .portrait-wrap {
+        min-height: 280px;
+      }
+
+      .hero-stats {
+        gap: 0.7rem;
+      }
+
+      .stat {
+        padding: 0.9rem;
+      }
+
+      .cta-row,
+      .project-links,
+      .cert-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="Go to top of portfolio">
+        <div class="brand-mark">SO</div>
+        <div class="brand-copy">
+          <strong>Sean Lennard Orias</strong>
+          <span>Server administration experience | Cloud support track</span>
+        </div>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Tools & Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#roadmap">Cloud Path</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-shell">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><i class="fa-solid fa-shield-halved"></i> BSIT candidate from the Philippines</div>
+          <h1>Completed server administration experience. <span>Ready for cloud support opportunities.</span></h1>
+          <p class="hero-lead">
+            I am Sean Lennard Orias, a BS Information Technology student in the Philippines with hands-on experience in web hosting operations,
+            Linux environments, and infrastructure support. My completed internship strengthened my ability to work with hosting platforms,
+            day-to-day administration tasks, and production-facing support work, and I am now positioning that foundation toward cloud-adjacent entry roles.
+          </p>
+          <ul class="hero-meta">
+            <li>Cloud Support / Associate Cloud Support</li>
+            <li>Junior Systems / Infrastructure Support</li>
+            <li>Technical Support Engineer</li>
+          </ul>
+          <div class="cta-row">
+            <a href="assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary" download>
+              <i class="fa-solid fa-file-arrow-down"></i>
+              Download CV
+            </a>
+            <a href="#certifications" class="btn btn-secondary">
+              <i class="fa-solid fa-award"></i>
+              View Certifications
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fa-solid fa-paper-plane"></i>
+              Contact Me
+            </a>
+          </div>
+          <p class="hero-note">
+            Core strengths: cPanel, WHM, CyberPanel, Cloudflare, Linux administration, web server support, documentation, troubleshooting, and foundational cloud and infrastructure concepts.
+          </p>
+        </div>
+
+        <aside class="hero-panel reveal" aria-label="Profile summary panel">
+          <div class="portrait-wrap">
+            <img src="assets/portfolio-pic.jpg" alt="Portrait of Sean Lennard Orias">
+            <div class="portrait-caption">
+              <div>
+                <strong>Sean Lennard Orias</strong>
+                <span>Infrastructure-focused IT candidate targeting cloud support and systems roles</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>3</strong>
+              <span>Earned certifications with proof available on this site</span>
+            </div>
+            <div class="stat">
+              <strong>4+</strong>
+              <span>Hosting and administration platforms used in internship work</span>
+            </div>
+            <div class="stat">
+              <strong>Cloud</strong>
+              <span>Focused on support, systems, and infrastructure roles after graduation</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="pill"><i class="fa-solid fa-terminal"></i> About</div>
+            <h2>From server administration into cloud support and infrastructure roles</h2>
+          </div>
+          <p>
+            My experience is rooted in practical IT work: maintaining hosting environments, using Linux tools,
+            and supporting day-to-day web infrastructure. I am especially interested in how stable systems, reliable support,
+            and operational visibility translate into cloud and infrastructure work.
+          </p>
+        </div>
+
+        <div class="grid about-grid">
+          <article class="card reveal">
+            <h3>Professional profile</h3>
+            <p>
+              I am a BS Information Technology student with practical experience built through real-world administration tasks, continuous self-study, and hands-on infrastructure work.
+              My internship gave me direct exposure to hosting control panels, DNS and CDN tooling, Linux workflows, and the operational discipline required to support production environments.
+            </p>
+            <p>
+              I am targeting Cloud Support Engineer, Associate Cloud Support Engineer, Junior Systems Administrator, Infrastructure Support, and Technical Support Engineer roles where I can build on that operations background and continue growing into cloud-focused work.
+            </p>
+          </article>
+
+          <aside class="signal reveal">
+            <h2>Operating principles</h2>
+            <p>I am most engaged by work that combines reliability, visibility, structured troubleshooting, and dependable systems support.</p>
+            <ul>
+              <li><strong>Reliability</strong><span>Keep services stable and supportable</span></li>
+              <li><strong>Support mindset</strong><span>Document clearly, troubleshoot methodically, and communicate well</span></li>
+              <li><strong>Continuous growth</strong><span>Strengthen cloud and infrastructure fundamentals over time</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="pill"><i class="fa-solid fa-server"></i> Experience</div>
+            <h2>Server administration internship experience</h2>
+          </div>
+          <p>
+            This experience strengthened my understanding of hosting operations, Linux-based workflows, and the discipline required to support production-facing systems in cloud-adjacent support environments.
+          </p>
+        </div>
+
+        <article class="timeline-card reveal">
+          <div class="timeline-header">
+            <div>
+              <h3>Server Admin Intern</h3>
+              <p>Contributed to web hosting operations, administration workflows, and Linux-based support tasks.</p>
+            </div>
+            <div class="timeline-badge">Ended April 20, 2026</div>
+          </div>
+          <ul class="responsibility-list">
+            <li>Worked with cPanel, WHM, CyberPanel, and Cloudflare across hosting-related workflows</li>
+            <li>Used Linux commands and Linux environments for administration tasks and troubleshooting</li>
+            <li>Supported web server operations with attention to organization, reliability, and consistent execution</li>
+            <li>Built practical familiarity with infrastructure tools that support uptime, access management, and service continuity</li>
+          </ul>
+          <ul class="tag-list" aria-label="Internship tools">
+            <li>cPanel</li>
+            <li>WHM</li>
+            <li>CyberPanel</li>
+            <li>Cloudflare</li>
+            <li>Linux CLI</li>
+            <li>Web Server Administration</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="pill"><i class="fa-solid fa-toolbox"></i> Tools & Skills</div>
+            <h2>Technical strengths for cloud-adjacent support roles</h2>
+          </div>
+          <p>
+            These are the areas I can speak to most clearly based on internship work, academic training, and ongoing technical practice for support, systems, and infrastructure roles.
+          </p>
+        </div>
+
+        <div class="grid tools-grid">
+          <article class="card tool-card reveal">
+            <div class="icon"><i class="fa-solid fa-globe"></i></div>
+            <h3>Hosting Platforms</h3>
+            <p>Worked with cPanel, WHM, and CyberPanel in practical hosting workflows and day-to-day administration tasks.</p>
+          </article>
+          <article class="card tool-card reveal">
+            <div class="icon"><i class="fa-solid fa-cloud"></i></div>
+            <h3>Network Edge & Delivery</h3>
+            <p>Worked with Cloudflare and related web infrastructure concepts that support DNS management, traffic handling, and service continuity.</p>
+          </article>
+          <article class="card tool-card reveal">
+            <div class="icon"><i class="fa-brands fa-linux" aria-hidden="true"></i></div>
+            <h3>Linux Administration</h3>
+            <p>Applied Linux commands and operating system fundamentals to administration tasks, system navigation, and troubleshooting.</p>
+          </article>
+          <article class="card tool-card reveal">
+            <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3>Troubleshooting</h3>
+            <p>Use a methodical approach to identify issues, narrow likely causes, and move toward practical resolutions.</p>
+          </article>
+          <article class="card tool-card reveal">
+            <div class="icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Documentation</h3>
+            <p>Maintain clear notes, process visibility, and organized record-keeping to support consistent operations work.</p>
+          </article>
+          <article class="card tool-card reveal">
+            <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Cloud & Operations Mindset</h3>
+            <p>Focused on structured troubleshooting, service continuity, and the infrastructure fundamentals that support cloud-adjacent operations work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="pill"><i class="fa-solid fa-diagram-project"></i> Projects & Practice</div>
+            <h2>Projects that support my cloud and infrastructure direction</h2>
+          </div>
+          <p>
+            These projects highlight my interest in cloud services, automation, infrastructure visibility, and practical technical problem-solving.
+          </p>
+        </div>
+
+        <div class="grid projects-grid">
+          <article class="project-card reveal">
+            <div>
+              <h3>AWS Journey Project</h3>
+              <p>
+                A personal cloud project focused on IAM, S3, Lambda, Athena, and CloudTrail. It gave me practical experience with least-privilege access,
+                scheduled automation, and cloud activity visibility, all of which align closely with cloud support and infrastructure work.
+              </p>
+            </div>
+            <ul class="tag-list">
+              <li>AWS IAM</li>
+              <li>S3</li>
+              <li>Lambda</li>
+              <li>Athena</li>
+              <li>CloudTrail</li>
+            </ul>
+            <div class="project-links">
+              <a class="inline-link" href="https://github.com/seanoriasx/AWS-journey" target="_blank" rel="noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                View project
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div>
+              <h3>Capstone: Disaster Readiness Simulation Game</h3>
+              <p>
+                A team-led capstone project where I coordinated work, timelines, and system direction. Although it is not cloud-focused,
+                it strengthened my planning, technical communication, and end-to-end thinking while delivering a real project with a team.
+              </p>
+            </div>
+            <ul class="tag-list">
+              <li>Team Leadership</li>
+              <li>System Planning</li>
+              <li>Project Coordination</li>
+              <li>Applied Development</li>
+            </ul>
+            <div class="project-links">
+              <a class="inline-link" href="https://github.com/seanoriasx/Disaster-Simulation-Android-Game/blob/main/README.md" target="_blank" rel="noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                View project
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div>
+              <h3>Ongoing Cloud Upskilling</h3>
+              <p>
+                Alongside formal projects, I continue strengthening Linux skills, cloud fundamentals, and hands-on practice that supports growth into cloud support and infrastructure roles.
+              </p>
+            </div>
+            <ul class="tag-list">
+              <li>Linux Practice</li>
+              <li>Cloud Fundamentals</li>
+              <li>Support Workflow Thinking</li>
+              <li>Continuous Learning</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="pill"><i class="fa-solid fa-route"></i> Cloud Growth Plan</div>
+            <h2>Next cloud-focused steps</h2>
+          </div>
+          <p>
+            With my server administration internship completed, my next focus is strengthening cloud fundamentals and hands-on platform practice for support and infrastructure roles.
+          </p>
+        </div>
+
+        <div class="grid roadmap-grid">
+          <article class="roadmap-card reveal">
+            <div class="status status-planned"><i class="fa-regular fa-clock"></i> Planned certification</div>
+            <h3>Microsoft Azure Fundamentals (AZ-900)</h3>
+            <p>
+              Planned as my next cloud certification to strengthen Azure fundamentals, cloud concepts, core services, pricing, and governance knowledge.
+            </p>
+          </article>
+
+          <article class="roadmap-card reveal">
+            <div class="status status-planned"><i class="fa-regular fa-clock"></i> Continued practice</div>
+            <h3>Cloud Support Skill Building</h3>
+            <p>
+              Continued hands-on practice in cloud support, infrastructure troubleshooting, documentation, and platform operations to stay ready for entry-level support and systems roles.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="pill"><i class="fa-solid fa-certificate"></i> Certifications</div>
+            <h2>Certifications & Learning</h2>
+          </div>
+          <p>
+            This section includes earned certifications, ongoing coursework, and planned credentials. Where proof files are available in this portfolio, they can be viewed or downloaded.
+          </p>
+        </div>
+
+        <div class="grid cert-grid">
+          <article class="cert-card reveal">
+            <div>
+              <h3>Google Cybersecurity Course</h3>
+              <p>Ongoing cybersecurity coursework covering core security concepts, risk awareness, incident-related workflows, and foundational defensive practices.</p>
+            </div>
+            <div class="cert-meta">
+              <span>Google</span>
+              <span>In Progress</span>
+            </div>
+            <!-- Placeholder file target when ready: assets/GoogleCybersecurityCertificate.pdf -->
+            <div class="cert-actions">
+              <button type="button" class="btn btn-secondary btn-placeholder" disabled aria-disabled="true" title="Placeholder until certificate PDF is added">
+                View PDF
+              </button>
+              <button type="button" class="btn btn-primary btn-placeholder" disabled aria-disabled="true" title="Placeholder until certificate PDF is added">
+                Download
+              </button>
+            </div>
+          </article>
+
+          <article class="cert-card reveal">
+            <div>
+              <h3>Microsoft Azure Fundamentals (AZ-900)</h3>
+              <p>Planned cloud certification focused on Azure fundamentals, cloud concepts, core services, pricing, and governance for entry-level cloud roles.</p>
+            </div>
+            <div class="cert-meta">
+              <span>Microsoft</span>
+              <span>Planned</span>
+            </div>
+            <!-- Placeholder file target when ready: assets/AZ-900-Certificate.pdf -->
+            <div class="cert-actions">
+              <button type="button" class="btn btn-secondary btn-placeholder" disabled aria-disabled="true" title="Placeholder until certificate PDF is added">
+                View PDF
+              </button>
+              <button type="button" class="btn btn-primary btn-placeholder" disabled aria-disabled="true" title="Placeholder until certificate PDF is added">
+                Download
+              </button>
+            </div>
+          </article>
+
+          <article class="cert-card reveal">
+            <div>
+              <h3>SAP Business One</h3>
+              <p>Business systems certification that reflects foundational knowledge in enterprise software environments.</p>
+            </div>
+            <div class="cert-meta">
+              <span>SAP</span>
+            </div>
+            <div class="cert-actions">
+              <a href="assets/SAPCertificate.pdf" class="btn btn-secondary" target="_blank" rel="noreferrer">View PDF</a>
+              <a href="assets/SAPCertificate.pdf" class="btn btn-primary" download>Download</a>
+            </div>
+          </article>
+
+          <article class="cert-card reveal">
+            <div>
+              <h3>IT Specialist - Databases</h3>
+              <p>Database-focused certification that supports my foundation in structured systems and data concepts.</p>
+            </div>
+            <div class="cert-meta">
+              <span>Certiport</span>
+            </div>
+            <div class="cert-actions">
+              <a href="assets/DatabasesCertificate.pdf" class="btn btn-secondary" target="_blank" rel="noreferrer">View PDF</a>
+              <a href="assets/DatabasesCertificate.pdf" class="btn btn-primary" download>Download</a>
+            </div>
+          </article>
+
+          <article class="cert-card reveal">
+            <div>
+              <h3>Certified Cloud System Analyst (CCSA)</h3>
+              <p>Cloud-focused certificate that supports my broader interest in infrastructure, systems, and platform operations.</p>
+            </div>
+            <div class="cert-meta">
+              <span>CCSA</span>
+            </div>
+            <div class="cert-actions">
+              <a href="assets/Certified Cloud System Analyst (CCSA)-certificate_4.pdf" class="btn btn-secondary" target="_blank" rel="noreferrer">View PDF</a>
+              <a href="assets/Certified Cloud System Analyst (CCSA)-certificate_4.pdf" class="btn btn-primary" download>Download</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="pill"><i class="fa-solid fa-address-card"></i> Contact</div>
+            <h2>Contact</h2>
+          </div>
+          <p>
+            These are the best channels for professional opportunities, networking, and technical collaboration.
+          </p>
+        </div>
+
+        <div class="grid contact-grid">
+          <article class="contact-card reveal">
+            <i class="fa-solid fa-envelope"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:seanoriasx@gmail.com">seanoriasx@gmail.com</a></p>
+          </article>
+          <article class="contact-card reveal">
+            <i class="fa-brands fa-linkedin"></i>
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noreferrer">linkedin.com/in/sean-orias-67763924a</a></p>
+          </article>
+          <article class="contact-card reveal">
+            <i class="fa-brands fa-github"></i>
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/seanoriasx" target="_blank" rel="noreferrer">github.com/seanoriasx</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias | BSIT portfolio focused on infrastructure, reliability, and long-term growth into cloud support and systems work.</p>
+      <div class="footer-links">
+        <a href="mailto:seanoriasx@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/seanoriasx" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
