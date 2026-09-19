@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  font-family: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(126, 169, 255, 0.16), transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(120, 213, 199, 0.16), transparent 22%),
+    linear-gradient(180deg, #07101a 0%, #09111b 35%, #06101a 100%);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(126, 169, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 169, 255, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 92%);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ── Accessibility foundations ───────────────────────────────────────────── */
+
+/* The previous design signalled focus with a 1px transform, which is not a
+   perceivable focus indicator (WCAG 2.4.7). This is. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.btn:focus-visible { outline-offset: 4px; }
+
+/* Anchors previously landed underneath the sticky header. */
+section[id],
+#main-content {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -100px;
+  z-index: 200;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #06101a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.18s ease;
+}
+
+.skip-link:focus { top: 0.75rem; }
+
+/* Global reduced-motion killswitch. Also force-reveals scroll content, so a
+   reduced-motion visitor can never be shown a blank page. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .js-reveal .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

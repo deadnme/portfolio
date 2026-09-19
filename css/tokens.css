@@ -1,0 +1,19 @@
+:root {
+  --bg: #09111b;
+  --bg-soft: #101b2a;
+  --panel: rgba(14, 26, 40, 0.82);
+  --panel-strong: rgba(18, 33, 51, 0.94);
+  --line: rgba(129, 177, 255, 0.18);
+  --line-strong: rgba(120, 213, 199, 0.35);
+  --text: #f4f8ff;
+  --muted: #9db0c7;
+  --accent: #78d5c7;
+  --accent-strong: #7ea9ff;
+  --accent-warm: #ffc670;
+  --shadow: 0 28px 80px rgba(2, 7, 16, 0.45);
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+  --max-width: 1180px;
+  --header-h: 76px;
+}

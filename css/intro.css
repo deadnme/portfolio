@@ -1,0 +1,97 @@
+/* ── Intro overlay ─────────────────────────────────────────────────────────
+   Hidden by default. Shown only when the inline head script adds .intro-active
+   to <html>, which it refuses to do under reduced motion or on a repeat visit
+   — so there is never a flash of an overlay that shouldn't be there.
+
+   The auto-dismiss is a CSS animation, deliberately NOT a setTimeout: if
+   js/intro.js never runs, the overlay still clears at 2.5s.                */
+
+#intro { display: none; }
+
+.intro-active #intro {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(120, 213, 199, 0.1), transparent 58%),
+    linear-gradient(180deg, #07101a, #06101a);
+  animation: intro-out 0.55s cubic-bezier(0.4, 0, 0.2, 1) 2.5s forwards;
+}
+
+.intro-active #intro.is-dismissing {
+  animation: intro-out 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.intro-inner {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.intro-word {
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(3rem, 12vw, 7.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.intro-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: intro-letter 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+.intro-dot { color: var(--accent); }
+
+.intro-sub,
+.intro-hint {
+  opacity: 0;
+  animation: intro-fade 0.5s ease forwards;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+.intro-sub {
+  color: var(--muted);
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+}
+
+.intro-hint {
+  margin-top: 1.6rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.intro-hint kbd {
+  font: inherit;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+@keyframes intro-letter {
+  from { opacity: 0; transform: translateY(0.5em) scale(0.94); filter: blur(7px); }
+  to   { opacity: 1; transform: none;                          filter: blur(0);   }
+}
+
+@keyframes intro-fade { to { opacity: 1; } }
+
+@keyframes intro-out {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* Belt and braces: even if .intro-active were somehow set, never animate. */
+@media (prefers-reduced-motion: reduce) {
+  #intro,
+  .intro-active #intro { display: none !important; }
+}
