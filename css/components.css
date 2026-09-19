@@ -234,12 +234,6 @@
   height: 1em;
 }
 
-.cv-formats {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-}
-
 .project-note {
   color: var(--muted);
   font-size: 0.9rem;
