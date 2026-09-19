@@ -4,7 +4,7 @@
    — so there is never a flash of an overlay that shouldn't be there.
 
    The auto-dismiss is a CSS animation, deliberately NOT a setTimeout: if
-   js/intro.js never runs, the overlay still clears at 2.5s.                */
+   js/intro.js never runs, the overlay still clears at 5s.                  */
 
 #intro { display: none; }
 
@@ -17,7 +17,7 @@
   background:
     radial-gradient(circle at 50% 42%, rgba(120, 213, 199, 0.1), transparent 58%),
     linear-gradient(180deg, #07101a, #06101a);
-  animation: intro-out 0.55s cubic-bezier(0.4, 0, 0.2, 1) 2.5s forwards;
+  animation: intro-out 0.55s cubic-bezier(0.4, 0, 0.2, 1) 5s forwards;
 }
 
 .intro-active #intro.is-dismissing {
