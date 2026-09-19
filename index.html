@@ -189,7 +189,7 @@
           <ul class="hero-stats">
             <li class="stat"><strong>5</strong><span>Certificates with downloadable proof on this page</span></li>
             <li class="stat"><strong>60+</strong><span>Knowledge-base articles written during my internship</span></li>
-            <li class="stat"><strong>1,925</strong><span>Lines of zero-dependency JavaScript published as a userscript</span></li>
+            <li class="stat"><strong>1,927</strong><span>Lines of zero-dependency JavaScript published as a userscript</span></li>
           </ul>
         </aside>
       </div>
@@ -358,7 +358,7 @@
             </div>
             <ul class="tag-list tag-list--meta" aria-label="Project facts">
               <li>v2.6.0</li>
-              <li>1,925 lines</li>
+              <li>1,927 lines</li>
               <li>0 dependencies</li>
               <li>GPL-3.0</li>
               <li>Vanilla JS</li>
@@ -381,6 +381,10 @@
                   then shares <strong>one clock</strong> &mdash; a single start time, set once, which later copies may read but never
                   rewind. The original image is hidden with <code>opacity: 0</code> and a <code>&lt;canvas&gt;</code> is painted in one
                   fixed overlay, with occlusion reconstructed from hit-testing and CSS <code>clip-path</code> insets.
+                  Since <strong>v2.6.0</strong> the painting happens off the main thread entirely: a dedicated
+                  <strong>worker</strong> owns the decoded frames, the shared per-emote clocks and its own animation loop,
+                  drawing into an <code>OffscreenCanvas</code> that commits straight to the compositor &mdash; so Twitch&rsquo;s
+                  own main-thread work can no longer stall the animation.
                 </p>
                 <p>
                   <strong>What I learned building it.</strong> Most of the work was profiling, not writing features. A test harness
@@ -396,8 +400,9 @@
 
               <div id="tenr-metrics">
                 <p class="project-note">
-                  Profiling drove the last two releases: roughly 7,900 forced hit-tests and 6,700 style recalculations per second
-                  were eliminated, under a 3&nbsp;ms per-frame occlusion budget and a 192&nbsp;MB image-bitmap cache.
+                  Profiling drove the v2.4.2 and v2.5.0 releases: roughly 7,900 forced hit-tests per second eliminated, and
+                  6,700 style recalculations per second cut to a few hundred, under a 3&nbsp;ms per-frame occlusion budget
+                  and a 192&nbsp;MB image-bitmap cache.
                 </p>
               </div>
             </div>
