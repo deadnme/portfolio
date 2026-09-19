@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sean Lennard Orias | Systems Administration &amp; Technical Support</title>
-  <meta name="description" content="Portfolio of Sean Lennard Orias, an Information Technology graduate in the Philippines with server administration internship experience, seeking a first role in systems administration or technical support. Also builds and publishes scripting projects.">
-  <meta name="theme-color" content="#09111b">
+  <meta name="description" content="Sean Lennard Orias is an Information Technology graduate in the Philippines with server administration internship experience, looking for a first systems administration or technical support role.">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sean Lennard Orias | Systems Administration &amp; Technical Support">
-  <meta property="og:description" content="Information Technology graduate with server administration internship experience, seeking a first systems or support role. Builds and publishes scripting projects.">
+  <meta property="og:description" content="Information Technology graduate with server administration internship experience: hosting migration, cPanel, WHM, CyberPanel, Cloudflare, DNS, Linux and 60+ knowledge-base articles. Looking for a first systems or support role.">
   <meta name="twitter:card" content="summary">
 
   <link rel="stylesheet" href="css/fonts.css">
@@ -19,35 +19,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/responsive.css">
-
-  <!-- Minimal guard so the overlay is still correct if intro.css fails to load. -->
-  <style>#intro{display:none}.intro-active #intro{display:grid}</style>
-
-  <!--
-    Inline and parser-blocking on purpose: both decisions below must be made
-    before the first paint, otherwise you get a flash of the wrong state.
-      1. .js-reveal  — only then does CSS hide scroll-reveal content, so JS
-                       being off or broken can never leave the page blank.
-      2. .intro-active — opt-IN, so a failure means "no overlay" rather than
-                       "content permanently covered".
-  -->
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (!reduce && 'IntersectionObserver' in window) root.classList.add('js-reveal');
-
-      if (reduce) return;
-      try {
-        if (sessionStorage.getItem('so-intro') === '1') return;
-        sessionStorage.setItem('so-intro', '1');
-      } catch (e) { return; }
-      root.classList.add('intro-active');
-    })();
-  </script>
 
   <script type="application/ld+json">
   {
@@ -58,63 +30,17 @@
     "address": { "@type": "PostalAddress", "addressCountry": "PH" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Lyceum of the Philippines University - Cavite" },
     "knowsAbout": ["Systems Administration", "Technical Support", "Linux", "cPanel", "WHM", "CyberPanel", "Cloudflare", "DNS", "JavaScript", "Userscripts"],
-    "seeks": "First role in systems administration or technical support",
+    "seeks": "First full-time role in systems administration or technical support",
     "sameAs": ["https://github.com/deadnme", "https://www.linkedin.com/in/sean-orias-67763924a/"]
   }
   </script>
 </head>
 <body>
-<!-- Inline icon sprite (Lucide, MIT). Same-document #fragment refs are required:
-     an external sprite.svg#id does not resolve when opened from file://. -->
-<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-  <defs>
-    <g id="i-base" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></g>
-  </defs>
-  <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
-  <symbol id="i-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
-  <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
-  <symbol id="i-tools" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
-  <symbol id="i-project" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
-  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
-  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
-  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
-  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></symbol>
-  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
-  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
-  <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
-  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
-  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
-  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
-  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
-  <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
-</svg>
-
   <a class="skip-link" href="#main-content">Skip to content</a>
-
-  <!-- Intro overlay. aria-hidden and with no focusable children: it is never
-       announced, never traps focus, and the auto-dismiss is pure CSS. -->
-  <div id="intro" class="intro" aria-hidden="true">
-    <div class="intro-inner">
-      <p class="intro-word">
-        <span class="intro-letter" style="--i:0">H</span><span class="intro-letter" style="--i:1">e</span><span class="intro-letter" style="--i:2">l</span><span class="intro-letter" style="--i:3">l</span><span class="intro-letter" style="--i:4">o</span><span class="intro-letter intro-dot" style="--i:5">.</span>
-      </p>
-      <p class="intro-sub" style="--i:7">Sean Lennard Orias &mdash; systems administration &amp; technical support</p>
-      <p class="intro-hint" style="--i:9"><kbd>Enter</kbd> <span>or click anywhere to continue</span></p>
-    </div>
-  </div>
 
   <header class="site-header">
     <div class="container nav-shell">
-      <a class="brand" href="#top">
-        <div class="brand-mark" aria-hidden="true">SO</div>
-        <div class="brand-copy">
-          <strong>Sean Lennard Orias</strong>
-          <span>Systems administration &amp; technical support</span>
-        </div>
-      </a>
+      <a class="brand" href="#top">Sean Lennard Orias</a>
       <nav aria-label="Primary">
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
@@ -125,489 +51,243 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <a href="assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
     </div>
   </header>
 
   <main id="top">
     <div id="main-content"></div>
-    <section class="hero">
-      <div class="container hero-shell">
-        <div class="hero-copy reveal">
-          <div class="eyebrow"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-cap"></use></svg> Information Technology graduate &middot; Philippines</div>
-          <h1>Server administration internship behind me. <span>Looking for my first systems or support role.</span></h1>
-          <p class="hero-lead">
-            I am Sean Lennard Orias, an Information Technology graduate of Lyceum of the Philippines University &ndash; Cavite.
-            My professional experience so far is one completed internship as a Server Administrator Intern, where I migrated a
-            client&rsquo;s website and business email between hosting stacks, worked daily in cPanel, WHM, CyberPanel and Cloudflare,
-            and wrote 60+ knowledge-base articles for the support team. I am now looking for my first full-time role in systems
-            administration or technical support &mdash; and in my own time I write scripts to automate the repetitive parts.
-          </p>
-          <ul class="hero-meta">
-            <li>Junior Systems Administrator</li>
-            <li>Technical Support Engineer (entry-level)</li>
-            <li>IT Support Specialist</li>
-            <li>Service Desk Engineer (L1/L2)</li>
-            <li>Web Hosting / Server Support</li>
-          </ul>
-          <div class="cta-row">
-            <a href="assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary" download>
-              <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-download"></use></svg>
-              Download CV
-            </a>
-            <a href="#projects" class="btn btn-secondary">
-              <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
-              See what I build
-            </a>
-            <a href="#contact" class="btn btn-secondary">
-              <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-send"></use></svg>
-              Contact me
-            </a>
+
+    <section class="hero" aria-label="Introduction">
+      <div class="container">
+        <h1>Sean Lennard Orias</h1>
+        <p class="hero-role">Systems administration and technical support, entry level.</p>
+        <p class="hero-lead">
+          I am an Information Technology graduate of Lyceum of the Philippines University &ndash; Cavite. During a
+          three-month server administration internship I ran live hosting for real clients: I migrated a website and
+          business email between hosting stacks, worked daily in cPanel, WHM, CyberPanel and Cloudflare, and wrote 60+
+          knowledge-base articles for the support team. I am looking for a first full-time systems or support role,
+          on-site or remote, and I write scripts to automate the repetitive parts of the job.
+        </p>
+        <div class="cta-row">
+          <a href="assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary" download>Download CV</a>
+          <a href="mailto:seanoriasx@gmail.com" class="btn btn-secondary">Email me</a>
+          <div class="aside-links">
+            <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+            <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
           </div>
-          <p class="hero-note">
-            Hands-on during the internship: cPanel, WHM, CyberPanel, Hostinger, Cloudflare, DNS, Linux CLI, VPS migration,
-            mail troubleshooting, ticketing and documentation. Studying toward Windows Server, Active Directory and scripting.
-          </p>
         </div>
-
-        <aside class="hero-panel reveal" aria-label="Profile summary">
-          <div class="terminal-card">
-            <div class="terminal-bar" aria-hidden="true">
-              <span class="term-dot term-dot--a"></span>
-              <span class="term-dot term-dot--b"></span>
-              <span class="term-dot term-dot--c"></span>
-              <span class="terminal-title">sean@portfolio:~</span>
-            </div>
-            <dl class="terminal-body">
-              <div class="term-row"><dt>whoami</dt><dd>Information Technology graduate, Lyceum PH &ndash; Cavite</dd></div>
-              <div class="term-row"><dt>experience</dt><dd>1 completed internship &mdash; server administration</dd></div>
-              <div class="term-row"><dt>learning</dt><dd>Linux <span class="term-op">&middot;</span> Windows Server <span class="term-op">&middot;</span> Active Directory <span class="term-op">&middot;</span> DNS <span class="term-op">&middot;</span> ticketing</dd></div>
-              <div class="term-row"><dt>writes</dt><dd>Vanilla JS <span class="term-op">&middot;</span> userscripts <span class="term-op">&middot;</span> C# / Unity</dd></div>
-              <div class="term-row"><dt>status</dt><dd><span class="status-chip">Seeking my first systems or support role</span></dd></div>
-            </dl>
-          </div>
-
-          <ul class="hero-stats">
-            <li class="stat"><strong>5</strong><span>Certificates with downloadable proof on this page</span></li>
-            <li class="stat"><strong>60+</strong><span>Knowledge-base articles written during my internship</span></li>
-            <li class="stat"><strong>1,927</strong><span>Lines of zero-dependency JavaScript published as a userscript</span></li>
-          </ul>
-        </aside>
+        <dl class="sheet" aria-label="At a glance">
+          <dt>Based</dt>
+          <dd>Philippines</dd>
+          <dt>Education</dt>
+          <dd>BS Information Technology, Lyceum of the Philippines University &ndash; Cavite</dd>
+          <dt>Experience</dt>
+          <dd>Server Administrator Intern, StartupLab Business Center &amp; AI Consulting Agency OPC, January to April 2026</dd>
+          <dt>Open to</dt>
+          <dd>Junior systems administrator, technical support engineer, IT support specialist, service desk (L1/L2), web hosting or server support</dd>
+        </dl>
       </div>
     </section>
 
     <section id="about">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="pill"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-terminal"></use></svg> About</div>
-            <h2>An IT graduate who learned systems work by doing it</h2>
-          </div>
-          <p>
-            My internship was my first exposure to running real infrastructure for real clients. It taught me how much of the job is
-            careful, documented, unglamorous work &mdash; and I liked that. I am looking for a first role where I can keep learning that way.
-          </p>
-        </div>
-
-        <div class="grid about-grid">
-          <article class="card reveal">
-            <h3>Profile</h3>
-            <p>
-              I hold a BS in Information Technology from Lyceum of the Philippines University &ndash; Cavite.
-              During a three-month internship I helped administer live hosting environments, took part in a full website and business
-              email migration, handled support tickets, and documented what I learned so the rest of the team could use it.
-            </p>
-            <p>
-              I am not an experienced systems administrator yet &mdash; that is exactly the role I am working toward. What I can offer now is
-              hands-on exposure to hosting control panels, DNS, mail troubleshooting and Linux, a habit of writing things down, and a genuine
-              interest in automating repetitive work rather than repeating it.
-            </p>
-            <dl class="education-card">
-              <dt>Lyceum of the Philippines University &ndash; Cavite</dt>
-              <dd>BS Information Technology</dd>
-            </dl>
-          </article>
-
-          <aside class="signal reveal">
-            <h3>How I work</h3>
-            <p>The habits I picked up during my internship, and the ones I am deliberately building.</p>
-            <ul>
-              <li><strong>Write it down</strong><span>If I solved it once, the next person should not have to</span></li>
-              <li><strong>Change carefully</strong><span>Back up first, verify after &mdash; production is someone&rsquo;s livelihood</span></li>
-              <li><strong>Automate the boring parts</strong><span>Scripting is how I avoid doing the same thing twice</span></li>
-              <li><strong>Ask early</strong><span>Early in my career, and I would rather ask than guess on a live system</span></li>
-            </ul>
-          </aside>
-        </div>
+        <div class="section-head"><h2>About</h2></div>
+        <p>
+          The internship was my first time running infrastructure that other people&rsquo;s businesses depended on.
+          Most of the job turned out to be careful, documented work: back up first, change one thing, verify it,
+          and write it down so the next person does not have to work it out again. That suited me, and it is the
+          kind of work I want to keep doing.
+        </p>
+        <ul class="habits" aria-label="How I work">
+          <li><strong>Write it down</strong><span>If I solved it once, the next person should not have to.</span></li>
+          <li><strong>Change carefully</strong><span>Back up first, verify after. Production is someone&rsquo;s livelihood.</span></li>
+          <li><strong>Automate the boring parts</strong><span>Scripting is how I avoid doing the same thing twice.</span></li>
+          <li><strong>Ask before guessing</strong><span>On a live system, a quick question beats a wrong assumption.</span></li>
+        </ul>
       </div>
     </section>
 
     <section id="experience">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="pill"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-server"></use></svg> Experience</div>
-            <h2>Internship experience</h2>
+        <div class="section-head"><h2>Experience</h2></div>
+        <article>
+          <div class="role-head">
+            <h3>Server Administrator Intern</h3>
+            <span class="role-dates">January 26 &ndash; April 15, 2026</span>
           </div>
-          <p>
-            One completed internship. It is the whole of my professional experience so far, so here is exactly what I did in it.
-          </p>
-        </div>
-
-        <article class="timeline-card reveal">
-          <div class="timeline-header">
-            <div>
-              <h3>Server Administrator Intern</h3>
-              <p>StartupLab Business Center &amp; AI Consulting Agency OPC</p>
-            </div>
-            <div class="timeline-badge">Internship &middot; Jan 26 &ndash; Apr 15, 2026</div>
+          <p class="role-org">StartupLab Business Center &amp; AI Consulting Agency OPC</p>
+          <ul class="bullets">
+            <li>Executed an end-to-end migration of a client&rsquo;s website and business email from legacy WHM/cPanel hosting to Hostinger/CyberPanel: backups, DNS pointing, mailbox provisioning, delta resynchronisation, permissions and post-cutover validation.</li>
+            <li>Implemented and troubleshot AI chatbot deployments across company and client websites by configuring cron jobs, ingestion workflows, branding and backend integrations.</li>
+            <li>Administered hosting environments using WHM, cPanel, Cloudflare, Hostinger and Domainmod; performed log cleanup, disk-usage audits, temporary-file maintenance and uptime monitoring supporting 99% availability targets.</li>
+            <li>Diagnosed and resolved issues involving email delivery, Spamhaus incidents, webmail access, ticketing systems and client-side mail configuration, including on-site support during the server transition.</li>
+            <li>Authored 60+ help-center and internal knowledge-base articles on domain management, DNS, website connectivity, business email, security and server operations.</li>
+          </ul>
+          <div class="chips-row">
+            <span>Tools</span>
+            <ul class="chips" aria-label="Tools used during the internship">
+              <li>cPanel</li>
+              <li>WHM</li>
+              <li>CyberPanel</li>
+              <li>Hostinger</li>
+              <li>Cloudflare</li>
+              <li>Domainmod</li>
+              <li>DNS</li>
+              <li>Linux CLI</li>
+              <li>VPS migration</li>
+              <li>BeDesk</li>
+            </ul>
           </div>
-          <ul class="responsibility-list">
-            <li>Executed an end-to-end migration of a client&rsquo;s website and business email from legacy WHM/cPanel hosting to Hostinger/CyberPanel &mdash; backups, DNS pointing, mailbox provisioning, delta resynchronisation, permissions and post-cutover validation</li>
-            <li>Implemented and troubleshot AI chatbot deployments across company and client websites by configuring cron jobs, ingestion workflows, branding and backend integrations</li>
-            <li>Administered hosting environments using WHM, cPanel, Cloudflare, Hostinger and Domainmod; performed log cleanup, disk-usage audits, temporary-file maintenance and uptime monitoring supporting 99% availability targets</li>
-            <li>Diagnosed and resolved issues involving email delivery, Spamhaus incidents, webmail access, ticketing systems and client-side mail configuration, including on-site support during the server transition</li>
-            <li>Authored 60+ help-center and internal knowledge-base articles on domain management, DNS, website connectivity, business email, security and server operations</li>
-          </ul>
-          <ul class="tag-list" aria-label="Tools used during the internship">
-            <li>cPanel</li>
-            <li>WHM</li>
-            <li>CyberPanel</li>
-            <li>Hostinger</li>
-            <li>Cloudflare</li>
-            <li>Domainmod</li>
-            <li>DNS</li>
-            <li>Linux CLI</li>
-            <li>VPS migration</li>
-            <li>BeDesk</li>
-          </ul>
         </article>
       </div>
     </section>
 
     <section id="skills">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="pill"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-tools"></use></svg> Skills</div>
-            <h2>What I have actually worked with</h2>
-          </div>
-          <p>
-            Grouped by what I did rather than by how good I claim to be. Everything here comes from internship work, my degree, or
-            projects on this page.
-          </p>
-        </div>
-
-        <div class="grid tools-grid">
-          <article class="card tool-card reveal">
-            <div class="icon"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg></div>
-            <h3>Hosting Platforms</h3>
-            <p>Daily work in cPanel, WHM, CyberPanel and Hostinger &mdash; account management, backups, disk-usage audits and a full migration between stacks.</p>
-          </article>
-          <article class="card tool-card reveal">
-            <div class="icon"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-cloud"></use></svg></div>
-            <h3>DNS &amp; Network Edge</h3>
-            <p>Cloudflare and Domainmod: DNS records, domain management, traffic handling, and repointing a live domain during a cutover.</p>
-          </article>
-          <article class="card tool-card reveal">
-            <div class="icon"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-terminal"></use></svg></div>
-            <h3>Linux &amp; Server Operations</h3>
-            <p>Linux command line for administration and troubleshooting, log cleanup and analysis, cron jobs, and uptime monitoring.</p>
-          </article>
-          <article class="card tool-card reveal">
-            <div class="icon"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg></div>
-            <h3>Scripting &amp; Automation</h3>
-            <p>Vanilla JavaScript, browser and DOM APIs, WebCodecs, and userscripts &mdash; plus C# and Unity from my capstone. I script to remove repetition, and I profile before optimising.</p>
-          </article>
-          <article class="card tool-card reveal">
-            <div class="icon"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg></div>
-            <h3>Support &amp; Troubleshooting</h3>
-            <p>Email delivery and Spamhaus incidents, webmail access, ticketing via BeDesk, access control, and on-site support during a server transition.</p>
-          </article>
-          <article class="card tool-card reveal">
-            <div class="icon"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-book"></use></svg></div>
-            <h3>Documentation</h3>
-            <p>60+ help-center and internal knowledge-base articles on DNS, domains, business email, connectivity, security and server operations.</p>
-          </article>
-          <article class="card tool-card reveal">
-            <div class="icon"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg></div>
-            <h3>Workplace Tools</h3>
-            <p>Microsoft 365 and Google Workspace administration basics, plus Active Directory and database fundamentals from my degree and certification study.</p>
-          </article>
-        </div>
+        <div class="section-head"><h2>Skills</h2></div>
+        <p class="section-intro">Grouped by what I have done, from internship work, my degree and the projects below.</p>
+        <dl class="sheet sheet--wide">
+          <dt>Hosting and servers</dt>
+          <dd>cPanel, WHM, CyberPanel, Hostinger, VPS migration, backups, cron jobs, log analysis, disk-usage audits, uptime monitoring</dd>
+          <dt>DNS and network edge</dt>
+          <dd>Cloudflare, Domainmod, DNS records, domain management, repointing a live domain during a cutover</dd>
+          <dt>Linux and operations</dt>
+          <dd>Linux command line for administration and troubleshooting, log cleanup, cron jobs, uptime monitoring</dd>
+          <dt>Support and troubleshooting</dt>
+          <dd>Email delivery, Spamhaus incidents, webmail access, BeDesk ticketing, access control, on-site support during a server transition</dd>
+          <dt>Scripting</dt>
+          <dd>Vanilla JavaScript, DOM and WebCodecs APIs, userscripts, Bash, and C# with Unity</dd>
+          <dt>Documentation</dt>
+          <dd>60+ help-center and internal knowledge-base articles on DNS, domains, business email, connectivity, security and server operations</dd>
+          <dt>Workplace tools</dt>
+          <dd>Microsoft 365 and Google Workspace administration basics; Active Directory and database fundamentals</dd>
+          <dt>Studying now</dt>
+          <dd>Windows Server, Active Directory and scripting, the areas the roles I am applying to ask for most</dd>
+        </dl>
       </div>
     </section>
 
     <section id="projects">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="pill"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-project"></use></svg> Projects</div>
-            <h2>Things I have built on my own time</h2>
-          </div>
-          <p>
-            The first one is where most of my scripting goes. It is a personal project and still a work in progress, but the problem it
-            solves and the way it is built say more about how I work than a description could.
-          </p>
-        </div>
+        <div class="section-head"><h2>Projects</h2></div>
 
-        <div class="grid projects-grid">
-          <article class="project-card project-card--featured reveal">
-            <div class="project-head">
-              <div class="pill"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-star"></use></svg> Featured project</div>
-              <h3>Twitch Emote No-Restart</h3>
-            </div>
-            <ul class="tag-list tag-list--meta" aria-label="Project facts">
-              <li>v2.6.0</li>
-              <li>1,927 lines</li>
-              <li>0 dependencies</li>
-              <li>GPL-3.0</li>
-              <li>Vanilla JS</li>
-              <li>Published on Greasy Fork</li>
-            </ul>
-
-            <div class="project-body">
-              <div>
-                <p>
-                  <strong>The problem.</strong> Animated Twitch, 7TV, BTTV and FrankerFaceZ emotes are ordinary
-                  <code>&lt;img&gt;</code> elements, each animated independently by the browser. Twitch&rsquo;s chat DOM churns
-                  constantly, and every churn snaps every on-screen copy of an emote back to frame&nbsp;0 &mdash; so a busy chat
-                  visibly flickers.
-                </p>
-                <p>
-                  <strong>The approach.</strong> Never let the browser animate the image at all. A <code>MutationObserver</code>
-                  recognises emote images by four CDN patterns, upgrades each URL to its highest-quality variant, fetches it
-                  (with a <code>GM_xmlhttpRequest</code> fallback when a CDN&rsquo;s CORS headers are unfriendly), and decodes it
-                  frame by frame through the <strong>WebCodecs <code>ImageDecoder</code></strong> API. Every copy of a given emote
-                  then shares <strong>one clock</strong> &mdash; a single start time, set once, which later copies may read but never
-                  rewind. The original image is hidden with <code>opacity: 0</code> and a <code>&lt;canvas&gt;</code> is painted in one
-                  fixed overlay, with occlusion reconstructed from hit-testing and CSS <code>clip-path</code> insets.
-                  Since <strong>v2.6.0</strong> the painting happens off the main thread entirely: a dedicated
-                  <strong>worker</strong> owns the decoded frames, the shared per-emote clocks and its own animation loop,
-                  drawing into an <code>OffscreenCanvas</code> that commits straight to the compositor &mdash; so Twitch&rsquo;s
-                  own main-thread work can no longer stall the animation.
-                </p>
-                <p>
-                  <strong>What I learned building it.</strong> Most of the work was profiling, not writing features. A test harness
-                  running at 20 messages/second showed the first version forcing thousands of synchronous layout reads per second;
-                  fixing that meant splitting every frame into a strict read phase and write phase, taking exactly one bounding-rect
-                  measurement per instance per frame, and capping occlusion sampling to a 3&nbsp;ms round-robin budget. An emote that
-                  misses that budget keeps a stale crop but still gets a fresh position, so it can never drift away from its image.
-                  Memory is bounded by an LRU that evicts only emotes nobody can see &mdash; evicting a visible one would restart it,
-                  which is the bug the whole script exists to prevent. Every failure path falls back to the native image rather than
-                  leaving a hole.
-                </p>
-              </div>
-
-              <div id="tenr-metrics">
-                <p class="project-note">
-                  Profiling drove the v2.4.2 and v2.5.0 releases: roughly 7,900 forced hit-tests per second eliminated, and
-                  6,700 style recalculations per second cut to a few hundred, under a 3&nbsp;ms per-frame occlusion budget
-                  and a 192&nbsp;MB image-bitmap cache.
-                </p>
-              </div>
-            </div>
-
+        <article class="project">
+          <div class="project-head">
+            <h3>Twitch Emote No-Restart</h3>
             <div class="project-links">
-              <a class="btn btn-primary" href="https://greasyfork.org/en/scripts/595615-twitch-emote-no-restart" target="_blank" rel="noopener noreferrer">
-                <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-external"></use></svg>
-                View on Greasy Fork<span class="visually-hidden"> (opens in a new tab)</span>
-              </a>
-              <a class="btn btn-secondary" href="https://github.com/deadnme/Twitch-Emote-No-Restart" target="_blank" rel="noopener noreferrer">
-                <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-github"></use></svg>
-                Read the source<span class="visually-hidden"> (opens in a new tab)</span>
-              </a>
+              <a href="https://greasyfork.org/en/scripts/595615-twitch-emote-no-restart" target="_blank" rel="noopener noreferrer">Greasy Fork<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <a href="https://github.com/deadnme/Twitch-Emote-No-Restart" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
-          </article>
+          </div>
+          <p class="project-meta">Personal project, published. Version 2.6.0, 1,927 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
+          <p>
+            A browser userscript that stops animated Twitch, 7TV, BTTV and FrankerFaceZ emotes from restarting every
+            time Twitch&rsquo;s chat re-renders. It decodes each emote once through the WebCodecs
+            <code>ImageDecoder</code>, gives every copy of an emote one shared clock, and paints them from a worker onto
+            an <code>OffscreenCanvas</code> so Twitch&rsquo;s own main-thread work cannot stall the animation.
+          </p>
+          <p>
+            Most of the effort went into profiling. A test harness running at 20 messages per second showed the first
+            version forcing thousands of synchronous layout reads per second; I fixed that by splitting each frame into
+            a strict read phase and write phase and capping occlusion sampling to a 3&nbsp;ms budget. Every failure path
+            falls back to the native image rather than leaving a hole.
+          </p>
+          <div id="tenr-metrics">
+            <p class="project-meta">
+              Profiling drove the v2.4.2 and v2.5.0 releases: roughly 7,900 forced hit-tests per second eliminated, and
+              6,700 style recalculations per second cut to a few hundred, under a 3&nbsp;ms per-frame occlusion budget
+              and a 192&nbsp;MB image-bitmap cache.
+            </p>
+          </div>
+        </article>
 
-          <article class="project-card reveal">
-            <div>
-              <h3>Git Publish Automation</h3>
-              <p>
-                A Bash script I run behind a single &ldquo;publish&rdquo; alias to stage, commit and push changes to this site. It refuses to
-                act when the repository is in a state it did not expect &mdash; a detached HEAD, the wrong branch, or a merge or rebase
-                already in progress &mdash; and when a push is rejected it rebases and retries once, never forcing. A watch mode publishes
-                on its own once edits have sat still, and a dry-run mode shows what it would do without touching anything.
-              </p>
-            </div>
-            <ul class="tag-list">
-              <li>Bash</li>
-              <li>Git</li>
-              <li>Automation</li>
-              <li>Personal project</li>
-            </ul>
-          </article>
+        <article class="project">
+          <div class="project-head">
+            <h3>Git publish automation</h3>
+          </div>
+          <p class="project-meta">Personal project. Bash and Git.</p>
+          <p>
+            A Bash script behind a single publish alias that stages, commits and pushes changes to this site. It refuses
+            to run from a detached HEAD, the wrong branch, or in the middle of a merge or rebase. When a push is rejected
+            it rebases and retries once and never force-pushes. A dry-run mode shows what it would do, and a watch mode
+            publishes on its own once edits have sat still.
+          </p>
+        </article>
 
-          <article class="project-card reveal">
-            <div>
-              <h3>Disaster Preparedness Game</h3>
-              <p>
-                My capstone project, where I was the programmer. I built the frontend and backend in Unity with C# &mdash; game logic,
-                player controls, the mini-map system and the overall gameplay mechanics &mdash; for a team project teaching disaster
-                readiness.
-              </p>
-            </div>
-            <ul class="tag-list">
-              <li>Unity</li>
-              <li>C#</li>
-              <li>Game logic</li>
-              <li>Mini-map system</li>
-              <li>Capstone</li>
-            </ul>
-          </article>
-
-          <article class="project-card reveal">
-            <div>
-              <h3>Ongoing Practice</h3>
-              <p>
-                I keep working on Linux fundamentals, Windows Server and Active Directory basics, and scripting &mdash; the areas I most
-                need for the roles I am applying to.
-              </p>
-            </div>
-            <ul class="tag-list">
-              <li>Linux practice</li>
-              <li>Windows Server</li>
-              <li>Active Directory</li>
-              <li>Scripting</li>
-            </ul>
-          </article>
-        </div>
+        <article class="project">
+          <div class="project-head">
+            <h3>Disaster preparedness game</h3>
+          </div>
+          <p class="project-meta">Team capstone project, programmer. Unity and C#.</p>
+          <p>
+            A game teaching disaster readiness, built by a team for our capstone. I was the programmer: game logic, player
+            controls, the mini-map system and the overall gameplay mechanics, frontend and backend, in Unity with C#.
+          </p>
+        </article>
       </div>
     </section>
 
-
     <section id="certifications">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="pill"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-award"></use></svg> Certifications</div>
-            <h2>Certifications &amp; training</h2>
-          </div>
-          <p>
-            Every certificate with a downloadable file is linked below, so you can verify it rather than take my word for it.
-            Anything still in progress or planned is labelled as such.
-          </p>
-        </div>
-
-        <div class="grid cert-grid">
-          <article class="cert-card reveal">
-            <div>
-              <h3>Certified Cloud System Analyst (CCSA)</h3>
-              <p>Cloud and systems certificate covering platform operations and infrastructure concepts.</p>
-            </div>
-            <div class="cert-meta">
-              <span>CCSA</span>
-              <span>2026</span>
-            </div>
-            <div class="cert-actions">
-              <a href="assets/CCSA-Certificate.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View PDF<span class="visually-hidden"> &mdash; Certified Cloud System Analyst certificate (opens in a new tab)</span></a>
-              <a href="assets/CCSA-Certificate.pdf" class="btn btn-primary" download>Download<span class="visually-hidden"> the Certified Cloud System Analyst certificate</span></a>
-            </div>
-          </article>
-
-          <article class="cert-card reveal">
-            <div>
-              <h3>Google AI Essentials</h3>
-              <p>Coursera certificate covering practical use of AI tools, prompting, and responsible use in everyday work.</p>
-            </div>
-            <div class="cert-meta">
-              <span>Google &middot; Coursera</span>
-              <span>2026</span>
-            </div>
-            <div class="cert-actions">
-              <a href="assets/Orias_AI_Essentials.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View PDF<span class="visually-hidden"> &mdash; Google AI Essentials certificate (opens in a new tab)</span></a>
-              <a href="assets/Orias_AI_Essentials.pdf" class="btn btn-primary" download>Download<span class="visually-hidden"> the Google AI Essentials certificate</span></a>
-            </div>
-          </article>
-
-          <article class="cert-card reveal">
-            <div>
-              <h3>IT Specialist &mdash; Databases</h3>
-              <p>Certiport certification covering database concepts, structured data and query fundamentals.</p>
-            </div>
-            <div class="cert-meta">
-              <span>Certiport</span>
-              <span>2024</span>
-            </div>
-            <div class="cert-actions">
-              <a href="assets/DatabasesCertificate.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View PDF<span class="visually-hidden"> &mdash; IT Specialist Databases certificate (opens in a new tab)</span></a>
-              <a href="assets/DatabasesCertificate.pdf" class="btn btn-primary" download>Download<span class="visually-hidden"> the IT Specialist Databases certificate</span></a>
-            </div>
-          </article>
-
-          <article class="cert-card reveal">
-            <div>
-              <h3>SAP Business One</h3>
-              <p>Business systems certification covering foundational knowledge of enterprise software environments.</p>
-            </div>
-            <div class="cert-meta">
-              <span>SAP</span>
-              <span>2023</span>
-            </div>
-            <div class="cert-actions">
-              <a href="assets/SAPCertificate.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View PDF<span class="visually-hidden"> &mdash; SAP Business One certificate (opens in a new tab)</span></a>
-              <a href="assets/SAPCertificate.pdf" class="btn btn-primary" download>Download<span class="visually-hidden"> the SAP Business One certificate</span></a>
-            </div>
-          </article>
-
-          <article class="cert-card reveal">
-            <div>
-              <h3>Google Cybersecurity Certificate</h3>
-              <p>Coursera programme covering security fundamentals, risk, incident workflows and defensive practices.</p>
-            </div>
-            <div class="cert-meta">
-              <span>Google &middot; Coursera</span>
-              <span>2026</span>
-            </div>
-            <div class="cert-actions">
-              <a href="assets/GoogleCybersecCert.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View PDF<span class="visually-hidden"> &mdash; Google Cybersecurity certificate (opens in a new tab)</span></a>
-              <a href="assets/GoogleCybersecCert.pdf" class="btn btn-primary" download>Download<span class="visually-hidden"> the Google Cybersecurity certificate</span></a>
-            </div>
-          </article>
-
-        </div>
+        <div class="section-head"><h2>Certifications</h2></div>
+        <p class="section-intro">Each one links to the certificate itself, so you can verify it rather than take my word for it.</p>
+        <ul class="cert-list">
+          <li>
+            <span class="cert-name">Certified Cloud System Analyst</span>
+            <span class="cert-issuer" data-year="2026">CCSA</span>
+            <span class="cert-year">2026</span>
+            <span class="cert-link"><a href="assets/CCSA-Certificate.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">: Certified Cloud System Analyst certificate (opens in a new tab)</span></a></span>
+          </li>
+          <li>
+            <span class="cert-name">Google AI Essentials</span>
+            <span class="cert-issuer" data-year="2026">Google, Coursera</span>
+            <span class="cert-year">2026</span>
+            <span class="cert-link"><a href="assets/Orias_AI_Essentials.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">: Google AI Essentials certificate (opens in a new tab)</span></a></span>
+          </li>
+          <li>
+            <span class="cert-name">Google Cybersecurity Certificate</span>
+            <span class="cert-issuer" data-year="2026">Google, Coursera</span>
+            <span class="cert-year">2026</span>
+            <span class="cert-link"><a href="assets/GoogleCybersecCert.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">: Google Cybersecurity certificate (opens in a new tab)</span></a></span>
+          </li>
+          <li>
+            <span class="cert-name">IT Specialist &ndash; Databases</span>
+            <span class="cert-issuer" data-year="2024">Certiport</span>
+            <span class="cert-year">2024</span>
+            <span class="cert-link"><a href="assets/DatabasesCertificate.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">: IT Specialist Databases certificate (opens in a new tab)</span></a></span>
+          </li>
+          <li>
+            <span class="cert-name">SAP Business One</span>
+            <span class="cert-issuer" data-year="2023">SAP</span>
+            <span class="cert-year">2023</span>
+            <span class="cert-link"><a href="assets/SAPCertificate.pdf" target="_blank" rel="noopener noreferrer">PDF<span class="visually-hidden">: SAP Business One certificate (opens in a new tab)</span></a></span>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section id="contact">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="pill"><svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg> Contact</div>
-            <h2>Get in touch</h2>
-          </div>
-          <p>
-            I am based in the Philippines and open to systems administration and technical support roles, on-site or remote.
-            Email is the fastest way to reach me.
-          </p>
-        </div>
-
-        <div class="grid contact-grid">
-          <article class="contact-card reveal">
-            <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>
-            <h3>Email</h3>
-            <p><a href="mailto:seanoriasx@gmail.com">seanoriasx@gmail.com</a></p>
-          </article>
-          <article class="contact-card reveal">
-            <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-linkedin"></use></svg>
-            <h3>LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">linkedin.com/in/sean-orias<span class="visually-hidden"> (opens in a new tab)</span></a></p>
-          </article>
-          <article class="contact-card reveal">
-            <svg class="glyph" aria-hidden="true" focusable="false"><use href="#i-github"></use></svg>
-            <h3>GitHub</h3>
-            <p><a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">github.com/deadnme<span class="visually-hidden"> (opens in a new tab)</span></a></p>
-          </article>
-        </div>
+        <div class="section-head"><h2>Contact</h2></div>
+        <p class="section-intro">I am based in the Philippines and open to systems administration and technical support roles, on-site or remote. Email is the fastest way to reach me.</p>
+        <dl class="sheet contact-sheet">
+          <dt>Email</dt>
+          <dd><a href="mailto:seanoriasx@gmail.com">seanoriasx@gmail.com</a></dd>
+          <dt>LinkedIn</dt>
+          <dd><a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">linkedin.com/in/sean-orias-67763924a<span class="visually-hidden"> (opens in a new tab)</span></a></dd>
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">github.com/deadnme<span class="visually-hidden"> (opens in a new tab)</span></a></dd>
+          <dt>CV</dt>
+          <dd><a href="assets/Sean_Lennard_Orias_CV.pdf" download>Sean_Lennard_Orias_CV.pdf</a></dd>
+        </dl>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-shell">
-      <p>
-        Sean Lennard Orias &mdash; Information Technology graduate in the Philippines, seeking a first role in systems
-        administration or technical support. <span id="footer-year"></span>
-      </p>
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
       <div class="footer-links">
         <a href="mailto:seanoriasx@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -618,9 +298,7 @@
   </footer>
 
   <script src="data/projects.js" defer></script>
-  <script src="js/reveal.js" defer></script>
-  <script src="js/nav.js" defer></script>
   <script src="js/projects.js" defer></script>
-  <script src="js/intro.js" defer></script>
+  <script src="js/nav.js" defer></script>
 </body>
 </html>

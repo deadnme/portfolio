@@ -1,6 +1,6 @@
-/* Renders the featured project's metric tiles from window.PORTFOLIO_DATA.
+/* Renders the featured project's metric rows from window.PORTFOLIO_DATA.
    If the data file is missing the static fallback prose already in the DOM
-   stays exactly as authored, so the card never renders empty. */
+   stays exactly as authored, so the section never renders empty. */
 (function () {
   'use strict';
 
@@ -9,8 +9,8 @@
   if (!host || !data || !data.metrics || !data.metrics.length) return;
 
   var html = data.metrics.map(function (m) {
-    return '<li class="stat"><strong>' + m.value + '</strong><span>' + m.label + '</span></li>';
+    return '<div><dt>' + m.value + '</dt><dd>' + m.label + '</dd></div>';
   }).join('');
 
-  host.innerHTML = '<ul class="metric-grid">' + html + '</ul>';
+  host.innerHTML = '<dl class="metric-list">' + html + '</dl>';
 })();
