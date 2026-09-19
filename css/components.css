@@ -6,7 +6,6 @@
 .project-card h3,
 .cert-card h3,
 .contact-card h3,
-.roadmap-card h3,
 .signal h3 {
   font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   letter-spacing: -0.03em;
@@ -25,7 +24,6 @@
 .project-card,
 .cert-card,
 .contact-card,
-.roadmap-card,
 .signal {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -108,7 +106,6 @@
 .timeline-header p,
 .timeline-card p,
 .project-card p,
-.roadmap-card p,
 .cert-card p,
 .contact-card p {
   color: var(--muted);
@@ -149,7 +146,6 @@
 
 .tools-grid,
 .projects-grid,
-.roadmap-grid,
 .cert-grid,
 .contact-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -158,7 +154,6 @@
 .card h3,
 .timeline-card h3,
 .project-card h3,
-.roadmap-card h3,
 .cert-card h3,
 .contact-card h3 {
   font-size: 1.2rem;
@@ -166,7 +161,6 @@
 }
 
 .project-card,
-.roadmap-card,
 .cert-card,
 .contact-card {
   padding: 1.5rem;
@@ -185,18 +179,6 @@
   gap: 0.55rem;
   color: var(--accent);
   font-weight: 600;
-}
-
-.status-progress {
-  background: rgba(126, 169, 255, 0.12);
-  border: 1px solid rgba(126, 169, 255, 0.18);
-  color: var(--accent-strong);
-}
-
-.status-planned {
-  background: rgba(255, 198, 112, 0.12);
-  border: 1px solid rgba(255, 198, 112, 0.2);
-  color: var(--accent-warm);
 }
 
 /* Scroll reveal.

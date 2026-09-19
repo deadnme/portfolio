@@ -164,16 +164,6 @@
   gap: 1rem;
 }
 
-.roadmap-card .status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.38rem 0.7rem;
-  border-radius: 999px;
-  margin-bottom: 0.9rem;
-  font-size: 0.8rem;
-}
-
 .cert-card {
   display: flex;
   flex-direction: column;
@@ -233,7 +223,9 @@
 }
 
 .term-dot--a { background: var(--accent-warm); }
+
 .term-dot--b { background: var(--accent); }
+
 .term-dot--c { background: var(--accent-strong); }
 
 .terminal-title {
