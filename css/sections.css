@@ -338,12 +338,6 @@
 
 /* ── Misc ────────────────────────────────────────────────────────────────── */
 
-.cert-note {
-  color: var(--muted);
-  font-size: 0.85rem;
-  font-style: italic;
-}
-
 .education-card dt {
   font-weight: 600;
   color: var(--text);
