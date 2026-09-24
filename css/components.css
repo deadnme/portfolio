@@ -58,8 +58,6 @@
   letter-spacing: -0.01em;
 }
 
-.sheet dd { color: var(--ink); }
-
 .sheet--wide { grid-template-columns: 13rem minmax(0, 1fr); }
 
 /* Chips (tools, tags) */

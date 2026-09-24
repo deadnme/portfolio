@@ -55,8 +55,7 @@
     </div>
   </header>
 
-  <main id="top">
-    <div id="main-content"></div>
+  <main id="main-content">
 
     <section class="hero" aria-label="Introduction">
       <div class="container">
@@ -77,7 +76,7 @@
             <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
           </div>
         </div>
-        <dl class="sheet" aria-label="At a glance">
+        <dl class="sheet">
           <dt>Based</dt>
           <dd>General Trias, Cavite</dd>
           <dt>Education</dt>
@@ -201,7 +200,7 @@
               <a href="https://github.com/deadnme/Twitch-Emote-No-Restart" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
           </div>
-          <p class="project-meta">Personal project, published. Version 2.6.1, 697 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
+          <p class="project-meta">Personal project, published. Version 2.6.2, 697 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
           <p>
             A browser userscript that stops animated Twitch, 7TV, BTTV and FrankerFaceZ emotes from restarting every
             time Twitch&rsquo;s chat re-renders. It decodes each emote once through the WebCodecs
@@ -220,13 +219,12 @@
             60 messages per second. It caught a bug the earlier release had shipped with: under heavy load, about one in
             four emotes briefly showed the wrong image. That is now zero.
           </p>
-          <div id="tenr-metrics">
-            <p class="project-meta">
-              Profiling drove the v2.4.2 and v2.5.0 releases: roughly 7,900 forced hit-tests per second eliminated, and
-              6,700 style recalculations per second cut to a few hundred. The v2.6.1 rewrite took the code from 1,927 to
-              697 lines, and wrong-emote canvases under a 60-messages-per-second flood went from 23% to 0%.
-            </p>
-          </div>
+          <dl class="metric-list">
+            <div><dt>~7,900 &rarr; 0</dt><dd>Forced <code>elementFromPoint</code> hit-tests per second, after profiling</dd></div>
+            <div><dt>~6,700 &rarr; a few hundred</dt><dd>Forced <code>getComputedStyle</code> calls per second</dd></div>
+            <div><dt>1,927 &rarr; 697</dt><dd>Lines of code after the v2.6.1 rewrite, with the same 20-check test suite passing</dd></div>
+            <div><dt>23% &rarr; 0%</dt><dd>Canvases showing the wrong emote during a 60-messages-per-second flood of 7TV, BTTV and FFZ emotes</dd></div>
+          </dl>
         </article>
 
         <article class="project">
@@ -327,8 +325,6 @@
     </div>
   </footer>
 
-  <script src="data/projects.js" defer></script>
-  <script src="js/projects.js" defer></script>
   <script src="js/nav.js" defer></script>
 </body>
 </html>
