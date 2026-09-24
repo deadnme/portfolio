@@ -201,7 +201,7 @@
               <a href="https://github.com/deadnme/Twitch-Emote-No-Restart" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
           </div>
-          <p class="project-meta">Personal project, published. Version 2.6.0, 1,927 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
+          <p class="project-meta">Personal project, published. Version 2.6.1, 697 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
           <p>
             A browser userscript that stops animated Twitch, 7TV, BTTV and FrankerFaceZ emotes from restarting every
             time Twitch&rsquo;s chat re-renders. It decodes each emote once through the WebCodecs
@@ -214,11 +214,17 @@
             a strict read phase and write phase and capping occlusion sampling to a 3&nbsp;ms budget. Every failure path
             falls back to the native image rather than leaving a hole.
           </p>
+          <p>
+            For v2.6.1 I rewrote it from 1,927 lines down to 697 without changing its behaviour, checked against the same
+            test suite. I then built a stress test that floods chat with real 7TV, BTTV and FrankerFaceZ emotes at up to
+            60 messages per second. It caught a bug the earlier release had shipped with: under heavy load, about one in
+            four emotes briefly showed the wrong image. That is now zero.
+          </p>
           <div id="tenr-metrics">
             <p class="project-meta">
               Profiling drove the v2.4.2 and v2.5.0 releases: roughly 7,900 forced hit-tests per second eliminated, and
-              6,700 style recalculations per second cut to a few hundred, under a 3&nbsp;ms per-frame occlusion budget
-              and a 192&nbsp;MB image-bitmap cache.
+              6,700 style recalculations per second cut to a few hundred. The v2.6.1 rewrite took the code from 1,927 to
+              697 lines, and wrong-emote canvases under a 60-messages-per-second flood went from 23% to 0%.
             </p>
           </div>
         </article>
