@@ -213,12 +213,6 @@
             a strict read phase and write phase and capping occlusion sampling to a 3&nbsp;ms budget. Every failure path
             falls back to the native image rather than leaving a hole.
           </p>
-          <p>
-            For v2.6.1 I rewrote it from 1,927 lines down to 697 without changing its behaviour, checked against the same
-            test suite. I then built a stress test that floods chat with real 7TV, BTTV and FrankerFaceZ emotes at up to
-            60 messages per second. It caught a bug the earlier release had shipped with: under heavy load, about one in
-            four emotes briefly showed the wrong image. That is now zero.
-          </p>
           <dl class="metric-list">
             <div><dt>~7,900 &rarr; 0</dt><dd>Forced <code>elementFromPoint</code> hit-tests per second, after profiling</dd></div>
             <div><dt>~6,700 &rarr; a few hundred</dt><dd>Forced <code>getComputedStyle</code> calls per second</dd></div>
