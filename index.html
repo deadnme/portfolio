@@ -221,6 +221,30 @@
 
         <article class="project">
           <div class="project-head">
+            <h3>TikTok Video/Audio Downloader</h3>
+            <div class="project-links">
+              <a href="https://greasyfork.org/en/scripts/596966" target="_blank" rel="noopener noreferrer">Greasy Fork<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <a href="https://github.com/deadnme/tiktok-video-downloader" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+          <p class="project-meta">Personal project, published. Version 1.3, 432 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
+          <p>
+            A browser userscript that adds a download button to TikTok on the web. One click saves the video on screen
+            as an MP4 in the highest quality TikTok has for it, with no watermark, or saves just its audio as an MP3.
+            Everything is saved locally; nothing goes through a third-party download site.
+          </p>
+          <p>
+            Earlier versions read each video&rsquo;s data from its own page, until TikTok started answering those
+            direct loads with HTTP 403. The current version hooks the page&rsquo;s own <code>fetch</code> and
+            <code>XMLHttpRequest</code> at document start and keeps every video object TikTok&rsquo;s app loads for
+            itself, so a click downloads straight from that cache with no extra requests. It picks the best file by
+            resolution first and bitrate second, keeps backup links for when TikTok&rsquo;s servers refuse one, moves
+            out of the way of the comment panel and hides itself during LIVE streams.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
             <h3>Git publish automation</h3>
             <div class="project-links">
               <a href="https://github.com/deadnme/git-push-automation" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
