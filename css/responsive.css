@@ -40,8 +40,6 @@
 
   .habits { grid-template-columns: 1fr; }
 
-  .metric-list { grid-template-columns: 1fr; }
-
   .cert-list li {
     grid-template-columns: 1fr auto;
     row-gap: 0.1rem;

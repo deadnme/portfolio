@@ -232,33 +232,6 @@
 
         <article class="project">
           <div class="project-head">
-            <h3>Twitch Emote No-Restart</h3>
-            <div class="project-links">
-              <a href="https://greasyfork.org/en/scripts/595615-twitch-emote-no-restart" target="_blank" rel="noopener noreferrer">Greasy Fork<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <a href="https://github.com/deadnme/Twitch-Emote-No-Restart" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-            </div>
-          </div>
-          <p class="project-meta">Personal project, published. Version 2.6.2, 697 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
-          <p>
-            A browser userscript that stops animated Twitch, 7TV, BTTV and FrankerFaceZ emotes from restarting every
-            time Twitch&rsquo;s chat re-renders. It decodes each emote once through the WebCodecs
-            <code>ImageDecoder</code>, gives every copy of an emote one shared clock, and paints them from a worker onto
-            an <code>OffscreenCanvas</code> so Twitch&rsquo;s own main-thread work cannot stall the animation.
-          </p>
-          <p>
-            Most of the effort went into profiling. A test harness running at 20 messages per second showed the first
-            version forcing thousands of synchronous layout reads per second; I fixed that by splitting each frame into
-            a strict read phase and write phase and capping occlusion sampling to a 3&nbsp;ms budget. Every failure path
-            falls back to the native image rather than leaving a hole.
-          </p>
-          <dl class="metric-list">
-            <div><dt>~7,900 &rarr; 0</dt><dd>Forced <code>elementFromPoint</code> hit-tests per second, after profiling</dd></div>
-            <div><dt>~6,700 &rarr; a few hundred</dt><dd>Forced <code>getComputedStyle</code> calls per second</dd></div>
-          </dl>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
             <h3>TikTok Video/Audio Downloader</h3>
             <div class="project-links">
               <a href="https://greasyfork.org/en/scripts/596966" target="_blank" rel="noopener noreferrer">Greasy Fork<span class="visually-hidden"> (opens in a new tab)</span></a>
