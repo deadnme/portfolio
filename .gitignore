@@ -6,3 +6,5 @@ desktop.ini
 assets/*.odg
 assets/cv-backup/
 ~$*
+.impeccable/
+PRODUCT.md

@@ -29,7 +29,7 @@
     "email": "mailto:seanoriasx@gmail.com",
     "address": { "@type": "PostalAddress", "addressCountry": "PH" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Lyceum of the Philippines University - Cavite" },
-    "knowsAbout": ["Systems Administration", "Technical Support", "Linux", "cPanel", "WHM", "CyberPanel", "Cloudflare", "DNS", "JavaScript", "Userscripts"],
+    "knowsAbout": ["Systems Administration", "Technical Support", "Windows Server", "Active Directory", "Group Policy", "PowerShell", "Linux", "cPanel", "WHM", "CyberPanel", "Cloudflare", "DNS"],
     "seeks": "First full-time role in systems administration or technical support",
     "sameAs": ["https://github.com/deadnme", "https://www.linkedin.com/in/sean-orias-67763924a/"]
   }
@@ -175,6 +175,7 @@
           <div class="project-head">
             <h3>Windows Active Directory homelab</h3>
             <div class="project-links">
+              <a href="https://github.com/deadnme/windows-ad-homelab#demo-working-a-help-desk-ticket-255-with-narration" target="_blank" rel="noopener noreferrer">Watch demo video<span class="visually-hidden"> (opens in a new tab)</span></a>
               <a href="https://github.com/deadnme/windows-ad-homelab" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
           </div>
@@ -190,7 +191,8 @@
             PC that caused it, a new starter, a leaver and a department move, and wrote PowerShell scripts for
             onboarding, offboarding and creating accounts in bulk. Testing turned up real problems, the most serious
             being that the help desk account could reset an administrator&rsquo;s password. I moved the admin accounts
-            out of its reach and confirmed the fix. Every step is written up with screenshots.
+            out of its reach and confirmed the fix. Every step is written up with screenshots, and a narrated video shows
+            me resolving an &ldquo;account expired&rdquo; ticket from start to finish.
           </p>
         </article>
 
@@ -218,17 +220,22 @@
 
         <article class="project">
           <div class="project-head">
-            <h3>Git publish automation</h3>
+            <h3>Active Directory health report</h3>
             <div class="project-links">
-              <a href="https://github.com/deadnme/git-push-automation" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <a href="https://github.com/deadnme/windows-ad-homelab/tree/main/health-report" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
           </div>
-          <p class="project-meta">Personal project. Bash and Git.</p>
+          <p class="project-meta">Personal project, part of the homelab above. PowerShell, Active Directory, Group Policy. Built with AI assistance and tested against the lab&rsquo;s domain controller.</p>
           <p>
-            A Bash script behind a single publish alias that stages, commits and pushes changes to a GitHub repository. It refuses
-            to run from a detached HEAD, the wrong branch, or in the middle of a merge or rebase. When a push is rejected
-            it rebases and retries once and never force-pushes. A dry-run mode shows what it would do, and a watch mode
-            publishes on its own once edits have sat still.
+            A read-only PowerShell script that checks a Windows domain and saves the result as one HTML page, with
+            problems sorted to the top. It flags locked-out and expired accounts, passwords about to expire or set
+            never to expire, accounts nobody has used in 90 days, disabled users who still hold group memberships,
+            and the members of the built-in admin and operator groups. It also checks the server itself: core directory services, disk space,
+            failed sign-ins and lockouts from the Security log, a pending restart and how long since the last update.
+          </p>
+          <p>
+            On my homelab it flagged a real problem: a Group Policy for mapped drives whose only link was disabled,
+            so it applied to no one. Every threshold, such as how many days count as stale, is a parameter.
           </p>
         </article>
 
@@ -240,11 +247,11 @@
               <a href="https://github.com/deadnme/tiktok-video-downloader" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
           </div>
-          <p class="project-meta">Personal project, published. Version 1.3, 432 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
+          <p class="project-meta">Personal project, published. Version 1.4, 470 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
           <p>
             A browser userscript that adds a download button to TikTok on the web. One click saves the video on screen
-            as an MP4 in the highest quality TikTok has for it, with no watermark, or saves just its audio as an MP3.
-            Everything is saved locally; nothing goes through a third-party download site.
+            as an MP4 in the highest quality TikTok has for it, with no watermark, or saves just its audio as an MP3
+            (or M4A when the sound is AAC). Everything is saved locally; nothing goes through a third-party download site.
           </p>
           <p>
             Earlier versions read each video&rsquo;s data from its own page, until TikTok started answering those
@@ -252,7 +259,9 @@
             <code>XMLHttpRequest</code> at document start and keeps every video object TikTok&rsquo;s app loads for
             itself, so a click downloads straight from that cache with no extra requests. It picks the best file by
             resolution first and bitrate second, keeps backup links for when TikTok&rsquo;s servers refuse one, moves
-            out of the way of the comment panel and hides itself during LIVE streams.
+            out of the way of the comment panel and hides itself during LIVE streams. Version 1.4 fixed audio downloads
+            for videos with an original sound, which TikTok serves from a host that blocks the page from reading it,
+            by falling back to the userscript manager&rsquo;s own request API for that host.
           </p>
         </article>
       </div>
