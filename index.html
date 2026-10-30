@@ -29,7 +29,7 @@
     "email": "mailto:seanoriasx@gmail.com",
     "address": { "@type": "PostalAddress", "addressCountry": "PH" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Lyceum of the Philippines University - Cavite" },
-    "knowsAbout": ["Systems Administration", "Technical Support", "Windows Server", "Active Directory", "Group Policy", "PowerShell", "Linux", "cPanel", "WHM", "CyberPanel", "Cloudflare", "DNS"],
+    "knowsAbout": ["Systems Administration", "Technical Support", "Windows Server", "Active Directory", "Group Policy", "PowerShell", "Linux", "cPanel", "WHM", "CyberPanel", "Cloudflare", "DNS", "AWS", "Terraform"],
     "seeks": "First full-time role in systems administration or technical support",
     "sameAs": ["https://github.com/deadnme", "https://www.linkedin.com/in/sean-orias-67763924a/"]
   }
@@ -173,6 +173,31 @@
 
         <article class="project">
           <div class="project-head">
+            <h3>AWS cloud homelab</h3>
+            <div class="project-links">
+              <a href="https://github.com/deadnme/aws-cloud-homelab" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+          <p class="project-meta">Personal lab project. AWS (EC2, VPC, load balancing, Auto Scaling, RDS, S3, IAM, CloudWatch), Terraform, Python, Docker. Built with AI assistance as a guided walkthrough; I ran every step on my own AWS account and fixed what broke.</p>
+          <p>
+            The client portal of the same fictional 20-person company as my Windows homelab below, moved to AWS and built with Terraform: a private network
+            across two data centres, two Linux web servers behind a load balancer that replace themselves when one fails,
+            a PostgreSQL database with no internet access whose password never appears in the code, database backups to
+            S3 that the servers can write but never delete, and CloudWatch logs, dashboards and email alarms. A Python
+            script checks the account for risky settings, and the app also runs in a Docker container.
+          </p>
+          <p>
+            I built it on a new-style AWS account that only works in one Region and has guardrails set by AWS, so I hit
+            and fixed problems the guide didn&rsquo;t expect: budget alerts that AWS&rsquo;s own policy blocked, which I sent
+            through a notification topic instead; servers that failed to launch because a new permission hadn&rsquo;t reached
+            every part of AWS yet; and a permissions test that wrongly reported &ldquo;denied&rdquo; until I traced it to the
+            account-wide Region rule. Every doc has screenshots from my account, and nothing is left running between
+            sessions.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
             <h3>Windows Active Directory homelab</h3>
             <div class="project-links">
               <a href="https://github.com/deadnme/windows-ad-homelab#demo-working-a-help-desk-ticket-255-with-narration" target="_blank" rel="noopener noreferrer">Watch demo video<span class="visually-hidden"> (opens in a new tab)</span></a>
@@ -229,7 +254,7 @@
               <a href="https://github.com/deadnme/windows-ad-homelab/tree/main/health-report" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
           </div>
-          <p class="project-meta">Personal project, part of the homelab above. PowerShell, Active Directory, Group Policy. Built with AI assistance and tested against the lab&rsquo;s domain controller.</p>
+          <p class="project-meta">Personal project, part of the Windows AD homelab. PowerShell, Active Directory, Group Policy. Built with AI assistance and tested against the lab&rsquo;s domain controller.</p>
           <p>
             A read-only PowerShell script that checks a Windows domain and saves the result as one HTML page, with
             problems sorted to the top. It flags locked-out and expired accounts, passwords about to expire or set
