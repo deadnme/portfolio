@@ -1,4 +1,4 @@
-/* Components added for the project cards, role views, case studies and notes. */
+/* Components added for the project cards, case studies and notes. */
 
 /* Hero stats */
 
@@ -29,65 +29,6 @@
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.4;
-}
-
-/* Role switcher */
-
-.role-switch {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 0.75rem;
-  margin: 0 0 1.5rem;
-}
-
-.role-switch[hidden] { display: none; }
-
-.role-switch-label {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
-.role-options {
-  display: inline-flex;
-  flex-wrap: wrap;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.role-options button {
-  min-height: 40px;
-  padding: 0.4rem 0.85rem;
-  border: 0;
-  border-right: 1px solid var(--rule);
-  background: var(--paper);
-  color: var(--ink);
-  font: 500 0.92rem var(--font-body);
-  cursor: pointer;
-}
-
-.role-options button:last-child { border-right: 0; }
-.role-options button:hover { background: var(--accent-soft); }
-
-.role-options button[aria-pressed="true"] {
-  background: var(--accent);
-  color: #fff;
-}
-
-.role-share {
-  width: 100%;
-  color: var(--muted);
-  font-size: 0.88rem;
-}
-
-.role-share code {
-  color: var(--ink);
-  background: #f4f6f8;
-  padding: 0.05rem 0.35rem;
-  border-radius: 3px;
 }
 
 /* Project cards */
@@ -426,16 +367,6 @@
 
 .hero .cta-row { margin-bottom: 0; }
 
-@media (max-width: 720px) {
-  .role-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-  }
-  .role-options button { border-right: 0; border-bottom: 1px solid var(--rule); }
-  .role-options button:nth-child(odd) { border-right: 1px solid var(--rule); }
-  .role-options button:nth-last-child(-n + 2) { border-bottom: 0; }
-}
 
 .prose code,
 .page-lead code,
