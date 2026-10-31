@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://seanorias.com/</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://seanorias.com/projects/aws-cloud-homelab</loc></url>
+  <url><loc>https://seanorias.com/projects/windows-ad-homelab</loc></url>
+  <url><loc>https://seanorias.com/projects/disaster-preparedness-game</loc></url>
+  <url><loc>https://seanorias.com/projects/ad-health-report</loc></url>
+  <url><loc>https://seanorias.com/notes/budget-alerts-blocked-by-scp</loc></url>
+  <url><loc>https://seanorias.com/notes/explicit-deny-from-above</loc></url>
+  <url><loc>https://seanorias.com/notes/asg-launch-authentication-failure</loc></url>
+  <url><loc>https://seanorias.com/notes/helpdesk-could-reset-domain-admin</loc></url>
+</urlset>
