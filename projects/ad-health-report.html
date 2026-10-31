@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Directory health report | Sean Lennard Orias</title>
+  <meta name="description" content="A read-only PowerShell script that checks a Windows domain and writes one HTML report, problems first. It caught a disabled GPO link in my lab.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/projects/ad-health-report">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Active Directory health report | Sean Lennard Orias">
+  <meta property="og:description" content="A read-only PowerShell script that checks a Windows domain and writes one HTML report, problems first. It caught a disabled GPO link in my lab.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#projects">&larr; All projects</a>
+        <h1>Active Directory health report</h1>
+        <p class="page-lead">A read-only PowerShell script that checks a Windows domain and saves the result as one HTML page, with problems sorted to the top so whoever opens it sees what needs attention first.</p>
+        <dl class="glance"><div><dt>Type</dt><dd>Personal tool, part of the AD homelab</dd></div><div><dt>Language</dt><dd>Windows PowerShell 5.1</dd></div><div><dt>Changes made</dt><dd>None: it only reads</dd></div><div><dt>Found</dt><dd>A real misconfigured GPO in my lab</dd></div></dl>
+        <div class="page-links"><a class="btn btn-primary" href="https://github.com/deadnme/windows-ad-homelab/tree/main/health-report" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></div>
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <figure class="figure figure--tall">
+          <a href="../assets/img/health/report.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/health/report.webp" alt="Sample AD health report" width="1085" height="1953" loading="lazy"></a>
+          <figcaption>A real run against my homelab&rsquo;s domain controller. Open it full size to read it.</figcaption>
+        </figure>
+
+        <h2>What it found</h2>
+        <p>On my homelab it flagged a real problem: the <em>HP &ndash; Drive Mappings</em> Group Policy still existed, but its only link was disabled, so it applied to no one and nobody got their mapped drives. Nothing looked wrong until someone asked where their drives had gone.</p>
+
+        <h2>What it checks</h2>
+        <table class="fix-table"><thead><tr><th scope="col">Area</th><th scope="col">Checks</th></tr></thead><tbody><tr><td data-label="Area">Accounts</td><td data-label="Checks">Locked-out users, expired accounts, passwords expiring within 14 days or set never to expire, users and computers with no sign-in for 90 days, disabled users still in groups, members of the built-in admin and operator groups</td></tr><tr><td data-label="Area">Group Policy</td><td data-label="Checks">GPOs that are unlinked, have every link disabled, or have all settings disabled</td></tr><tr><td data-label="Area">Server</td><td data-label="Checks">Core directory services running, disk space, failed sign-ins and lockouts from the Security log in the last 24 hours, a pending restart, and how long since the last update</td></tr></tbody></table>
+
+        <h2>How it&rsquo;s built</h2>
+        <ul>
+          <li><strong>Read-only.</strong> It changes nothing in AD or on the server, so it&rsquo;s safe to run on a production DC.</li>
+          <li><strong>One failure doesn&rsquo;t stop the report.</strong> If a check fails, for example for lack of permission, it shows as Critical with the error and the rest still runs.</li>
+          <li><strong>Every threshold is a parameter,</strong> such as how many days count as stale.</li>
+          <li><strong>Problems first.</strong> Results are sorted by severity, so the top of the page is what needs attention.</li>
+        </ul>
+
+        <p class="callout">Built with AI assistance and tested against my lab&rsquo;s domain controller.</p>
+        <nav class="next-up" aria-label="More"><a href="disaster-preparedness-game.html">&larr; Disaster preparedness game</a><span></span></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

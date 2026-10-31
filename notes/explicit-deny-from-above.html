@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An explicitDeny that wasn&rsquo;t in my policy | Sean Lennard Orias</title>
+  <meta name="description" content="The IAM policy simulator told me my web servers couldn&rsquo;t upload backups. They were uploading backups just fine.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/notes/explicit-deny-from-above">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="An explicitDeny that wasn&rsquo;t in my policy | Sean Lennard Orias">
+  <meta property="og:description" content="The IAM policy simulator told me my web servers couldn&rsquo;t upload backups. They were uploading backups just fine.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes" aria-current="page">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#notes">&larr; All notes</a>
+        <h1>An explicitDeny that wasn&rsquo;t in my policy</h1>
+        <p class="page-lead">The IAM policy simulator told me my web servers couldn&rsquo;t upload backups. They were uploading backups just fine.</p>
+        <dl class="glance"><div><dt>Area</dt><dd>AWS &middot; IAM</dd></div><div><dt>Project</dt><dd><a href="../projects/aws-cloud-homelab.html">AWS cloud homelab</a></dd></div></dl>
+        
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <h2>What I saw</h2>
+        <p>To prove the servers&rsquo; role followed least privilege, I asked the policy simulator whether it could <code>s3:PutObject</code> (should be allowed) and <code>s3:DeleteObject</code> (should be denied) on the backup bucket. Both came back <code>explicitDeny</code>, even though a real upload from a server had just worked.</p>
+        <figure class="figure ">
+          <a href="../assets/img/aws/07-policy-simulator.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/07-policy-simulator.webp" alt="Policy simulator output before and after adding the Region" loading="lazy"></a>
+          <figcaption>Before: both denied. After adding the Region context: upload allowed, delete denied.</figcaption>
+        </figure>
+        <h2>Why it happened</h2>
+        <p>My account only allows requests in one Region, <code>ap-southeast-2</code>. That rule is an SCP with an <code>aws:RequestedRegion</code> condition. A simulated request has no Region unless you give it one, so the SCP denied everything I simulated.</p>
+        <h2>How I found it</h2>
+        <p>The full JSON output showed that no statement in the role&rsquo;s own policies matched, and that <code>OrganizationsDecisionDetail.AllowedByOrganizations</code> was <code>false</code>. An explicit deny that matches nothing in the role points above the account.</p>
+        <h2>The fix</h2>
+        <p>I re-ran the simulation with <code>--context-entries</code> setting <code>aws:RequestedRegion</code> to <code>ap-southeast-2</code>. Upload: <code>allowed</code>. Delete: <code>implicitDeny</code>. Exactly what the policy intended, and I didn&rsquo;t touch the role.</p>
+        <p class="callout"><strong>Lesson:</strong> before editing a role because of an <code>explicitDeny</code>, check <code>OrganizationsDecisionDetail</code>. The deny may not be yours.</p>
+        <nav class="next-up" aria-label="More"><a href="budget-alerts-blocked-by-scp.html">&larr; AWS&rsquo;s own guardrail blocked my budget alerts</a><a href="asg-launch-authentication-failure.html">Servers that failed to launch, then fixed themselves &rarr;</a></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

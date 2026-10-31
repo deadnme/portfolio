@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The help desk could reset a Domain Admin&rsquo;s password | Sean Lennard Orias</title>
+  <meta name="description" content="I gave the help desk the right to reset passwords and nothing else. Testing what it couldn&rsquo;t do showed it could take over the domain.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/notes/helpdesk-could-reset-domain-admin">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The help desk could reset a Domain Admin&rsquo;s password | Sean Lennard Orias">
+  <meta property="og:description" content="I gave the help desk the right to reset passwords and nothing else. Testing what it couldn&rsquo;t do showed it could take over the domain.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes" aria-current="page">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#notes">&larr; All notes</a>
+        <h1>The help desk could reset a Domain Admin&rsquo;s password</h1>
+        <p class="page-lead">I gave the help desk the right to reset passwords and nothing else. Testing what it <em>couldn&rsquo;t</em> do showed it could take over the domain.</p>
+        <dl class="glance"><div><dt>Area</dt><dd>Active Directory</dd></div><div><dt>Project</dt><dd><a href="../projects/windows-ad-homelab.html">Windows AD homelab</a></dd></div></dl>
+        
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <h2>What I saw</h2>
+        <p>While testing a password-reset ticket as Maya, a help desk user, I also checked that she <em>couldn&rsquo;t</em> reset the password of <code>adm.ethan.brooks</code>, an IT admin account that is a Domain Admin. She could. With that, Maya could have signed in as a Domain Admin and taken over the whole domain.</p>
+        
+        <h2>Why it happened</h2>
+        <p>I had created the <code>adm.*</code> admin accounts inside the IT department&rsquo;s OU, and the help desk&rsquo;s &ldquo;reset password&rdquo; delegation covers every account under that part of the tree. Windows does protect Domain Admin accounts with a background process, AdminSDHolder (SDProp), that strips inherited permissions, but it only runs every 60 minutes, and the account was newer than that.</p>
+        <h2>How I found it</h2>
+        <p>Testing the negative case on purpose: after each delegation I tried things the help desk should <em>not</em> be able to do, signed in as a help desk user.</p>
+        <h2>The fix</h2>
+        <p>A dedicated <strong>Admin Accounts</strong> OU outside any help desk delegation, and the admin accounts moved into it. Then I re-tested as Maya:</p><pre><code>PS&gt; Set-ADAccountPassword adm.ethan.brooks -Reset ... -Credential $maya
+Denied: Access is denied</code></pre><p>My user-creation script now puts admin accounts in that OU from the start.</p>
+        <p class="callout"><strong>Lesson:</strong> delegation flows down to everything in the OU. Keep privileged accounts in their own OU, and test what the help desk <em>can&rsquo;t</em> do as well as what it can.</p>
+        <nav class="next-up" aria-label="More"><a href="asg-launch-authentication-failure.html">&larr; Servers that failed to launch, then fixed themselves</a><span></span></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

@@ -5,15 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sean Lennard Orias | Systems Administration, Support &amp; Cloud</title>
-  <meta name="description" content="Sean Lennard Orias is an Information Technology graduate from Cavite with server administration internship experience and an AWS homelab, looking for a first systems administration, technical support or entry-level cloud role.">
+  <meta name="description" content="Sean Lennard Orias: entry-level systems administration, technical support and cloud. Server administration internship running live client hosting, plus documented Windows Active Directory and AWS (Terraform) homelabs.">
   <meta name="author" content="Sean Lennard Orias">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/">
 
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seanorias.com/">
   <meta property="og:title" content="Sean Lennard Orias | Systems Administration, Support &amp; Cloud">
-  <meta property="og:description" content="Information Technology graduate with server administration internship experience: hosting migration, cPanel, WHM, CyberPanel, Cloudflare, DNS, Linux and 60+ knowledge-base articles, plus Active Directory and AWS (Terraform) homelabs. Looking for a first systems, support or cloud role.">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:description" content="Server administration internship running live client hosting (cPanel, WHM, CyberPanel, Cloudflare, DNS, 60+ KB articles), plus documented Active Directory and AWS (Terraform) homelabs. Looking for a first systems, support or cloud role.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
@@ -21,6 +24,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/pages.css">
   <link rel="stylesheet" href="css/responsive.css">
 
   <script type="application/ld+json">
@@ -28,6 +32,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Sean Lennard Orias",
+    "url": "https://seanorias.com/",
     "email": "mailto:sean@seanorias.com",
     "address": { "@type": "PostalAddress", "addressCountry": "PH" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Lyceum of the Philippines University - Cavite" },
@@ -45,10 +50,10 @@
       <a class="brand" href="#top">Sean Lennard Orias</a>
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#notes">Notes</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -59,17 +64,34 @@
 
   <main id="main-content">
 
-    <section class="hero" aria-label="Introduction">
+    <section class="hero" id="top" aria-label="Introduction">
       <div class="container">
         <h1>Sean Lennard Orias</h1>
-        <p class="hero-role">Systems administration, technical support and cloud, entry level.</p>
+        <p class="hero-role" data-role-text>Systems administration, technical support and cloud, entry level.</p>
         <p class="hero-lead">
-          I am an Information Technology graduate of Lyceum of the Philippines University &ndash; Cavite. During a
-          three-month server administration internship I ran live hosting for real clients: I migrated a website and
-          business email between hosting stacks, worked daily in cPanel, WHM, CyberPanel and Cloudflare, and wrote 60+
-          knowledge-base articles for the support team. I have since built an AWS lab with Terraform on my own account. I am looking for a first full-time systems,
-          support or cloud role, on-site or remote, and I write scripts to automate the repetitive parts of the job.
+          I ran live client hosting during a three-month server administration internship, then built and
+          documented a Windows Active Directory lab and an AWS lab of my own. I&rsquo;m looking for a first
+          full-time systems, support or cloud role, on-site or remote.
         </p>
+
+        <ul class="stats" aria-label="At a glance">
+          <li><strong>3 months</strong><span>running live client hosting as a server admin intern</span></li>
+          <li><strong>60+</strong><span>knowledge-base articles written for the support team</span></li>
+          <li><strong>2 labs</strong><span>Windows AD and AWS, documented step by step</span></li>
+          <li><strong>18</strong><span>real problems in those labs, traced, fixed and written up</span></li>
+        </ul>
+
+        <div class="role-switch" data-role-switch hidden>
+          <span class="role-switch-label" id="role-label">Show me as a fit for</span>
+          <div class="role-options" role="group" aria-labelledby="role-label">
+            <button type="button" data-role="all" aria-pressed="true">Everything</button>
+            <button type="button" data-role="sysadmin" aria-pressed="false">Systems admin</button>
+            <button type="button" data-role="helpdesk" aria-pressed="false">IT support</button>
+            <button type="button" data-role="cloud" aria-pressed="false">Cloud</button>
+          </div>
+          <p class="role-share" data-role-share hidden>Projects and skills are reordered for this role. Link to this view: <code data-role-url></code></p>
+        </div>
+
         <div class="cta-row">
           <a href="assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary" download>Download CV</a>
           <a href="mailto:sean@seanorias.com" class="btn btn-secondary">Email me</a>
@@ -78,34 +100,83 @@
             <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
           </div>
         </div>
-        <dl class="sheet">
-          <dt>Based</dt>
-          <dd>General Trias, Cavite</dd>
-          <dt>Education</dt>
-          <dd>BS Information Technology, Lyceum of the Philippines University &ndash; Cavite, 2026</dd>
-          <dt>Experience</dt>
-          <dd>Server Administrator Intern, StartupLab Business Center &amp; AI Consulting Agency OPC, January to April 2026</dd>
-          <dt>Open to</dt>
-          <dd>Junior systems administrator, cloud support or cloud operations associate, technical support engineer, IT support specialist, service desk, web hosting or server support</dd>
-        </dl>
       </div>
     </section>
 
-    <section id="about">
+    <section id="projects">
       <div class="container">
-        <div class="section-head"><h2>About</h2></div>
-        <p>
-          The internship was my first time running infrastructure that other people&rsquo;s businesses depended on.
-          Most of the job turned out to be careful, documented work: back up first, change one thing, verify it,
-          and write it down so the next person does not have to work it out again. That suited me, and it is the
-          kind of work I want to keep doing.
-        </p>
-        <ul class="habits" aria-label="How I work">
-          <li><strong>Write it down</strong><span>If I solved it once, the next person should not have to.</span></li>
-          <li><strong>Change carefully</strong><span>Back up first, verify after. Production is someone&rsquo;s livelihood.</span></li>
-          <li><strong>Automate the boring parts</strong><span>Scripting is how I avoid doing the same thing twice.</span></li>
-          <li><strong>Ask before guessing</strong><span>On a live system, a quick question beats a wrong assumption.</span></li>
-        </ul>
+        <div class="section-head"><h2>Projects</h2></div>
+        <p class="section-intro">Each one has a case study with screenshots from my own machines and accounts.</p>
+
+        <div class="cards" data-reorder>
+
+          <article class="card" data-o-all="1" data-o-sysadmin="3" data-o-helpdesk="3" data-o-cloud="1">
+            <a class="card-media card-media--contain" href="projects/aws-cloud-homelab.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/aws/architecture.svg" alt="" width="1120" height="640" loading="lazy">
+            </a>
+            <div class="card-body">
+              <p class="card-kicker">Personal lab &middot; Cloud</p>
+              <h3><a href="projects/aws-cloud-homelab.html">AWS cloud homelab</a></h3>
+              <p class="card-outcome">A client portal on AWS built with Terraform: two self-healing web servers behind a load balancer, a private PostgreSQL database, S3 backups and CloudWatch alarms.</p>
+              <ul class="chips" aria-label="Technologies"><li>AWS</li><li>Terraform</li><li>Linux</li><li>Python</li><li>Docker</li></ul>
+              <p class="card-links">
+                <a class="primary-link" href="projects/aws-cloud-homelab.html">Read the case study &rarr;</a>
+                <a href="https://github.com/deadnme/aws-cloud-homelab" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-o-all="2" data-o-sysadmin="1" data-o-helpdesk="1" data-o-cloud="3">
+            <a class="card-media" href="projects/windows-ad-homelab.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/ad/card.webp" alt="" width="960" height="600" loading="lazy">
+            </a>
+            <div class="card-body">
+              <p class="card-kicker">Personal lab &middot; Systems admin</p>
+              <h3><a href="projects/windows-ad-homelab.html">Windows Active Directory homelab</a></h3>
+              <p class="card-outcome">Active Directory for a fictional 20-person firm: department shares, five Group Policies, six help desk tickets worked, and a privilege problem found and fixed.</p>
+              <ul class="chips" aria-label="Technologies"><li>Windows Server 2025</li><li>Active Directory</li><li>Group Policy</li><li>PowerShell</li></ul>
+              <p class="card-links">
+                <a class="primary-link" href="projects/windows-ad-homelab.html">Read the case study &rarr;</a>
+                <a href="https://github.com/deadnme/windows-ad-homelab" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-o-all="3" data-o-sysadmin="5" data-o-helpdesk="4" data-o-cloud="5">
+            <a class="card-media" href="projects/disaster-preparedness-game.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/game/card.webp" alt="" width="960" height="600" loading="lazy">
+            </a>
+            <div class="card-body">
+              <p class="card-kicker">Team capstone &middot; Programmer</p>
+              <h3><a href="projects/disaster-preparedness-game.html">Disaster preparedness game</a></h3>
+              <p class="card-outcome">A 3D Android game on Google Play that walks LPU Cavite students through earthquake, typhoon, flood, fire and ashfall drills on a recreation of their campus.</p>
+              <ul class="chips" aria-label="Technologies"><li>Unity</li><li>C#</li><li>Android</li><li>Supabase</li></ul>
+              <p class="card-links">
+                <a class="primary-link" href="projects/disaster-preparedness-game.html">Read the case study &rarr;</a>
+                <a href="https://play.google.com/store/apps/details?id=com.Monggi.Big_Wan" target="_blank" rel="noopener noreferrer">Google Play<span class="visually-hidden"> (opens in a new tab)</span></a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card" data-o-all="4" data-o-sysadmin="2" data-o-helpdesk="2" data-o-cloud="4">
+            <a class="card-media" href="projects/ad-health-report.html" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/health/card.webp" alt="" width="960" height="600" loading="lazy">
+            </a>
+            <div class="card-body">
+              <p class="card-kicker">Personal tool &middot; PowerShell</p>
+              <h3><a href="projects/ad-health-report.html">Active Directory health report</a></h3>
+              <p class="card-outcome">A read-only script that checks a Windows domain and writes one HTML report with problems first. It caught a real Group Policy mistake in my lab.</p>
+              <ul class="chips" aria-label="Technologies"><li>PowerShell</li><li>Active Directory</li><li>Group Policy</li></ul>
+              <p class="card-links">
+                <a class="primary-link" href="projects/ad-health-report.html">Read the case study &rarr;</a>
+                <a href="https://github.com/deadnme/windows-ad-homelab/tree/main/health-report" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="section-note">The two homelabs and the health report are learning projects, not production work. I built them with AI assistance as guided walkthroughs, then ran every step on my own machines and AWS account, fixed what broke and wrote it up. The game was a team capstone, where I was a programmer.</p>
       </div>
     </section>
 
@@ -144,157 +215,77 @@
       </div>
     </section>
 
-    <section id="skills">
+    <section id="notes">
       <div class="container">
-        <div class="section-head"><h2>Skills</h2></div>
-        <p class="section-intro">Grouped by what I have done, from internship work, my degree and the projects below.</p>
-        <dl class="sheet sheet--wide">
-          <dt>Windows and Active Directory</dt>
-          <dd>Windows Server 2025, Windows 11, Active Directory users and groups, Group Policy, DNS, DHCP, folder permissions</dd>
-          <dt>AWS and infrastructure as code</dt>
-          <dd>EC2, VPC, load balancing and Auto Scaling, RDS PostgreSQL, S3, IAM roles and policies, CloudWatch, Terraform, Docker, Python (boto3)</dd>
-          <dt>Hosting and servers</dt>
-          <dd>cPanel, WHM, CyberPanel, Hostinger, VPS migration, backups, cron jobs, log analysis, disk-usage audits, uptime monitoring</dd>
-          <dt>DNS and network edge</dt>
-          <dd>Cloudflare, Domainmod, DNS records, domain management, repointing a live domain during a cutover</dd>
-          <dt>Linux and operations</dt>
-          <dd>Linux command line for administration and troubleshooting, log cleanup, cron jobs, uptime monitoring</dd>
-          <dt>Support and troubleshooting</dt>
-          <dd>Email delivery, Spamhaus incidents, webmail access, BeDesk ticketing, access control, on-site support during a server transition</dd>
-          <dt>Scripting</dt>
-          <dd>PowerShell, Bash, vanilla JavaScript, userscripts, and C# with Unity</dd>
-          <dt>Documentation</dt>
-          <dd>60+ help-center and internal knowledge-base articles on DNS, domains, business email, connectivity, security and server operations</dd>
-          <dt>Workplace tools</dt>
-          <dd>Microsoft 365 and Google Workspace administration basics; database fundamentals</dd>
-        </dl>
+        <div class="section-head"><h2>Notes</h2></div>
+        <p class="section-intro">Short write-ups of problems I actually hit, in the same style as the knowledge-base articles I wrote at work.</p>
+        <ul class="notes">
+          <li>
+            <span class="note-tag">AWS &middot; Billing</span>
+            <a href="notes/budget-alerts-blocked-by-scp.html">AWS&rsquo;s own guardrail blocked my budget alerts</a>
+            <p>A service control policy denied email verification for budget alerts, so I routed them through an SNS topic instead.</p>
+          </li>
+          <li>
+            <span class="note-tag">AWS &middot; IAM</span>
+            <a href="notes/explicit-deny-from-above.html">An explicitDeny that wasn&rsquo;t in my policy</a>
+            <p>Why the IAM policy simulator denied an upload that worked for real, and the field that pointed above the account.</p>
+          </li>
+          <li>
+            <span class="note-tag">AWS &middot; Auto Scaling</span>
+            <a href="notes/asg-launch-authentication-failure.html">Servers that failed to launch, then fixed themselves</a>
+            <p>IAM eventual consistency, the Auto Scaling activity log, and <code>terraform untaint</code> instead of a rebuild.</p>
+          </li>
+          <li>
+            <span class="note-tag">Active Directory</span>
+            <a href="notes/helpdesk-could-reset-domain-admin.html">The help desk could reset a Domain Admin&rsquo;s password</a>
+            <p>How a delegation on the wrong OU reached an admin account, why AdminSDHolder didn&rsquo;t save me, and the fix.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section id="projects">
+    <section id="skills">
       <div class="container">
-        <div class="section-head"><h2>Projects</h2></div>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>AWS cloud homelab</h3>
-            <div class="project-links">
-              <a href="https://github.com/deadnme/aws-cloud-homelab" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-            </div>
+        <div class="section-head"><h2>Skills</h2></div>
+        <p class="section-intro">Grouped by what I have done, from internship work, my degree and the projects above.</p>
+        <dl class="skill-rows" data-reorder>
+          <div data-o-all="1" data-o-sysadmin="1" data-o-helpdesk="2" data-o-cloud="6">
+            <dt>Windows and Active Directory</dt>
+            <dd>Windows Server 2025, Windows 11, Active Directory users and groups, Group Policy, DNS, DHCP, folder permissions</dd>
           </div>
-          <p class="project-meta">Personal lab project. AWS (EC2, VPC, load balancing, Auto Scaling, RDS, S3, IAM, CloudWatch), Terraform, Python, Docker. Built with AI assistance as a guided walkthrough; I ran every step on my own AWS account and fixed what broke.</p>
-          <p>
-            The client portal of the same fictional 20-person company as my Windows homelab below, moved to AWS and built with Terraform: a private network
-            across two data centres, two Linux web servers behind a load balancer that replace themselves when one fails,
-            a PostgreSQL database with no internet access whose password never appears in the code, database backups to
-            S3 that the servers can write but never delete, and CloudWatch logs, dashboards and email alarms. A Python
-            script checks the account for risky settings, and the app also runs in a Docker container.
-          </p>
-          <p>
-            I built it on a new-style AWS account that only works in one Region and has guardrails set by AWS, so I hit
-            and fixed problems the guide didn&rsquo;t expect: budget alerts that AWS&rsquo;s own policy blocked, which I sent
-            through a notification topic instead; servers that failed to launch because a new permission hadn&rsquo;t reached
-            every part of AWS yet; and a permissions test that wrongly reported &ldquo;denied&rdquo; until I traced it to the
-            account-wide Region rule. Every doc has screenshots from my account, and nothing is left running between
-            sessions.
-          </p>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>Windows Active Directory homelab</h3>
-            <div class="project-links">
-              <a href="https://github.com/deadnme/windows-ad-homelab" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-            </div>
+          <div data-o-all="2" data-o-sysadmin="6" data-o-helpdesk="9" data-o-cloud="1">
+            <dt>AWS and infrastructure as code</dt>
+            <dd>EC2, VPC, load balancing and Auto Scaling, RDS PostgreSQL, S3, IAM roles and policies, CloudWatch, Terraform, Docker, Python (boto3)</dd>
           </div>
-          <p class="project-meta">Personal lab project. Windows Server 2025, Windows 11, PowerShell and VirtualBox. Built with AI assistance as a guided walkthrough; I studied, re-ran and documented every step myself.</p>
-          <p>
-            The IT setup for a fictional 20-person company, built on my laptop: a Windows Server 2025 server that
-            handles everyone&rsquo;s sign-ins, network addresses and shared folders, and a Windows 11 office PC joined to it.
-            Six departments each get a shared folder only they can open, and five company-wide policies set password and
-            lockout rules, lock idle screens, map network drives and block USB sticks for the sales team.
-          </p>
-          <p>
-            I then worked through six help desk tickets in the lab, including a real account lockout traced back to the
-            PC that caused it, a new starter, a leaver and a department move, and wrote PowerShell scripts for
-            onboarding, offboarding and creating accounts in bulk. Testing turned up real problems, the most serious
-            being that the help desk account could reset an administrator&rsquo;s password. I moved the admin accounts
-            out of its reach and confirmed the fix. Every step is written up with screenshots.
-          </p>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>Disaster preparedness game</h3>
-            <div class="project-links">
-              <a href="https://github.com/deadnme/bigone" target="_blank" rel="noopener noreferrer">Screenshots on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <a href="https://play.google.com/store/apps/details?id=com.Monggi.Big_Wan" target="_blank" rel="noopener noreferrer">Google Play<span class="visually-hidden"> (opens in a new tab)</span></a>
-            </div>
+          <div data-o-all="3" data-o-sysadmin="2" data-o-helpdesk="6" data-o-cloud="4">
+            <dt>Hosting and servers</dt>
+            <dd>cPanel, WHM, CyberPanel, Hostinger, VPS migration, backups, cron jobs, log analysis, disk-usage audits, uptime monitoring</dd>
           </div>
-          <p class="project-meta">Team capstone project, programmer. Unity, C#, Android, Supabase (PostgreSQL). Published on Google Play.</p>
-          <p>
-            A 3D first-person Android game that teaches students what to do in a disaster, set on a recreation of the
-            Lyceum of the Philippines University &ndash; Cavite campus. Its 20 earthquake, typhoon, flood, fire and ashfall levels put the player
-            in one of four campus buildings and walk them through a real drill: duck, cover and hold during the shaking,
-            wait out aftershocks, find another way round a blocked exit, and evacuate with a crowd of classmates to the
-            assembly area. Touch controls, a mini-map, campus wall maps and a route guide keep players oriented.
-          </p>
-          <p>
-            Players pick a character, read safety guides for five disasters (earthquake, flood, typhoon, fire and
-            ashfall) and collect emergency items such as a flashlight, whistle and first-aid kit into an in-game almanac.
-            Students sign in with their school email and a one-time code; progress is saved to a Supabase database,
-            syncs between devices, keeps working offline after the first login, and an account can only be active on
-            one device at a time. I also built a Windows content manager that lets staff place 3D objects in levels and
-            publish content updates to every player without releasing a new version of the app.
-          </p>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>Active Directory health report</h3>
-            <div class="project-links">
-              <a href="https://github.com/deadnme/windows-ad-homelab/tree/main/health-report" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-            </div>
+          <div data-o-all="4" data-o-sysadmin="4" data-o-helpdesk="5" data-o-cloud="3">
+            <dt>DNS and network edge</dt>
+            <dd>Cloudflare, Domainmod, DNS records, domain management, repointing a live domain during a cutover</dd>
           </div>
-          <p class="project-meta">Personal project, part of the Windows AD homelab. PowerShell, Active Directory, Group Policy. Built with AI assistance and tested against the lab&rsquo;s domain controller.</p>
-          <p>
-            A read-only PowerShell script that checks a Windows domain and saves the result as one HTML page, with
-            problems sorted to the top. It flags locked-out and expired accounts, passwords about to expire or set
-            never to expire, accounts nobody has used in 90 days, disabled users who still hold group memberships,
-            and the members of the built-in admin and operator groups. It also checks the server itself: core directory services, disk space,
-            failed sign-ins and lockouts from the Security log, a pending restart and how long since the last update.
-          </p>
-          <p>
-            On my homelab it flagged a real problem: a Group Policy for mapped drives whose only link was disabled,
-            so it applied to no one. Every threshold, such as how many days count as stale, is a parameter.
-          </p>
-        </article>
-
-        <article class="project">
-          <div class="project-head">
-            <h3>TikTok Video/Audio Downloader</h3>
-            <div class="project-links">
-              <a href="https://greasyfork.org/en/scripts/596966" target="_blank" rel="noopener noreferrer">Greasy Fork<span class="visually-hidden"> (opens in a new tab)</span></a>
-              <a href="https://github.com/deadnme/tiktok-video-downloader" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-            </div>
+          <div data-o-all="5" data-o-sysadmin="3" data-o-helpdesk="8" data-o-cloud="2">
+            <dt>Linux and operations</dt>
+            <dd>Linux command line for administration and troubleshooting, log cleanup, cron jobs, uptime monitoring</dd>
           </div>
-          <p class="project-meta">Personal project, published. Version 1.4, 470 lines of vanilla JavaScript, zero dependencies, GPL-3.0.</p>
-          <p>
-            A browser userscript that adds a download button to TikTok on the web. One click saves the video on screen
-            as an MP4 in the highest quality TikTok has for it, with no watermark, or saves just its audio as an MP3
-            (or M4A when the sound is AAC). Everything is saved locally; nothing goes through a third-party download site.
-          </p>
-          <p>
-            Earlier versions read each video&rsquo;s data from its own page, until TikTok started answering those
-            direct loads with HTTP 403. The current version hooks the page&rsquo;s own <code>fetch</code> and
-            <code>XMLHttpRequest</code> at document start and keeps every video object TikTok&rsquo;s app loads for
-            itself, so a click downloads straight from that cache with no extra requests. It picks the best file by
-            resolution first and bitrate second, keeps backup links for when TikTok&rsquo;s servers refuse one, moves
-            out of the way of the comment panel and hides itself during LIVE streams. Version 1.4 fixed audio downloads
-            for videos with an original sound, which TikTok serves from a host that blocks the page from reading it,
-            by falling back to the userscript manager&rsquo;s own request API for that host.
-          </p>
-        </article>
+          <div data-o-all="6" data-o-sysadmin="7" data-o-helpdesk="1" data-o-cloud="7">
+            <dt>Support and troubleshooting</dt>
+            <dd>Email delivery, Spamhaus incidents, webmail access, BeDesk ticketing, access control, on-site support during a server transition</dd>
+          </div>
+          <div data-o-all="7" data-o-sysadmin="5" data-o-helpdesk="7" data-o-cloud="5">
+            <dt>Scripting</dt>
+            <dd>PowerShell, Bash, Python, vanilla JavaScript, userscripts, and C# with Unity</dd>
+          </div>
+          <div data-o-all="8" data-o-sysadmin="8" data-o-helpdesk="4" data-o-cloud="8">
+            <dt>Documentation</dt>
+            <dd>60+ help-center and internal knowledge-base articles on DNS, domains, business email, connectivity, security and server operations</dd>
+          </div>
+          <div data-o-all="9" data-o-sysadmin="9" data-o-helpdesk="3" data-o-cloud="9">
+            <dt>Workplace tools</dt>
+            <dd>Microsoft 365 and Google Workspace administration basics; database fundamentals</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
@@ -337,6 +328,34 @@
       </div>
     </section>
 
+    <section id="about">
+      <div class="container">
+        <div class="section-head"><h2>About</h2></div>
+        <p>
+          The internship was my first time running infrastructure that other people&rsquo;s businesses depended on.
+          Most of the job turned out to be careful, documented work: back up first, change one thing, verify it,
+          and write it down so the next person does not have to work it out again. That suited me, and it is the
+          kind of work I want to keep doing.
+        </p>
+        <ul class="habits" aria-label="How I work">
+          <li><strong>Write it down</strong><span>If I solved it once, the next person should not have to.</span></li>
+          <li><strong>Change carefully</strong><span>Back up first, verify after. Production is someone&rsquo;s livelihood.</span></li>
+          <li><strong>Automate the boring parts</strong><span>Scripting is how I avoid doing the same thing twice.</span></li>
+          <li><strong>Ask before guessing</strong><span>On a live system, a quick question beats a wrong assumption.</span></li>
+        </ul>
+        <dl class="sheet about-sheet">
+          <dt>Based</dt>
+          <dd>General Trias, Cavite</dd>
+          <dt>Education</dt>
+          <dd>BS Information Technology, Lyceum of the Philippines University &ndash; Cavite, 2026</dd>
+          <dt>Experience</dt>
+          <dd>Server Administrator Intern, StartupLab Business Center &amp; AI Consulting Agency OPC, January to April 2026</dd>
+          <dt>Open to</dt>
+          <dd>Junior systems administrator, cloud support or cloud operations associate, technical support engineer, IT support specialist, service desk, web hosting or server support</dd>
+        </dl>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="container">
         <div class="section-head"><h2>Contact</h2></div>
@@ -368,5 +387,6 @@
   </footer>
 
   <script src="js/nav.js" defer></script>
+  <script src="js/roles.js" defer></script>
 </body>
 </html>

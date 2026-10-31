@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster preparedness game | Sean Lennard Orias</title>
+  <meta name="description" content="BigOne, a team capstone: a 3D Android game on Google Play that walks LPU Cavite students through disaster drills on a recreation of their campus.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/projects/disaster-preparedness-game">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Disaster preparedness game | Sean Lennard Orias">
+  <meta property="og:description" content="BigOne, a team capstone: a 3D Android game on Google Play that walks LPU Cavite students through disaster drills on a recreation of their campus.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#projects">&larr; All projects</a>
+        <h1>Disaster preparedness game</h1>
+        <p class="page-lead">A 3D first-person Android game that teaches students what to do in a disaster, set on a recreation of the Lyceum of the Philippines University &ndash; Cavite campus.</p>
+        <dl class="glance"><div><dt>Type</dt><dd>Team capstone</dd></div><div><dt>My role</dt><dd>Programmer</dd></div><div><dt>Stack</dt><dd>Unity, C#, Android, Supabase (PostgreSQL)</dd></div><div><dt>Status</dt><dd>Published on Google Play</dd></div></dl>
+        <div class="page-links"><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.Monggi.Big_Wan" target="_blank" rel="noopener noreferrer">Get it on Google Play<span class="visually-hidden"> (opens in a new tab)</span></a><a class="btn btn-secondary" href="https://github.com/deadnme/bigone" target="_blank" rel="noopener noreferrer">Showcase on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></div>
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <figure class="figure ">
+          <a href="../assets/img/game/04-earthquake-evacuation.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/game/04-earthquake-evacuation.webp" alt="Earthquake level: evacuating down the emergency stairs with classmates" loading="lazy"></a>
+          <figcaption>Earthquake level: going down the emergency stairs with a crowd of classmates.</figcaption>
+        </figure>
+
+        <h2>What it does</h2>
+        <p>Its 20 earthquake, typhoon, flood, fire and ashfall levels put the player in one of four campus buildings and walk them through a real drill: duck, cover and hold during the shaking, wait out aftershocks, find another way round a blocked exit, and evacuate with a crowd of classmates to the assembly area. Touch controls, a mini-map, campus wall maps and a route guide keep players oriented.</p>
+        <p>Players pick a character, read safety guides for the five disasters and collect emergency items such as a flashlight, whistle and first-aid kit into an in-game almanac.</p>
+
+        <h2>Accounts, data and updates</h2>
+        <ul>
+          <li>Students sign in with their school email and a one-time code.</li>
+          <li>Progress is saved to a Supabase (PostgreSQL) database and syncs between devices.</li>
+          <li>The game keeps working offline after the first sign-in.</li>
+          <li>An account can only be active on one device at a time.</li>
+          <li>I also built a Windows content manager that lets staff place 3D objects in levels and publish content updates to every player without releasing a new version of the app.</li>
+        </ul>
+
+        <h2>Screenshots</h2>
+        <div class="gallery"><figure class="figure ">
+          <a href="../assets/img/game/01-login.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/game/01-login.webp" alt="Sign-in screen" loading="lazy"></a>
+          <figcaption>Sign-in with a school email and a one-time code.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/game/02-main-menu.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/game/02-main-menu.webp" alt="Main menu" loading="lazy"></a>
+          <figcaption>Main menu: simulation, arcade, almanac and guidelines.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/game/03-choose-disaster.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/game/03-choose-disaster.webp" alt="Choose a disaster screen" loading="lazy"></a>
+          <figcaption>Choosing a disaster to practise.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/game/05-typhoon.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/game/05-typhoon.webp" alt="Typhoon level" loading="lazy"></a>
+          <figcaption>Typhoon: the storm gets stronger as the level goes on.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/game/08-assembly-area.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/game/08-assembly-area.webp" alt="Heading to the evacuation area" loading="lazy"></a>
+          <figcaption>Heading to the evacuation area at the front gate.</figcaption>
+        </figure></div>
+
+        <p>The source code isn&rsquo;t public; the GitHub repository is a showcase with the store screenshots. Signing in needs an LPU Cavite student email.</p>
+        <nav class="next-up" aria-label="More"><a href="windows-ad-homelab.html">&larr; Windows Active Directory homelab</a><a href="ad-health-report.html">Active Directory health report &rarr;</a></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

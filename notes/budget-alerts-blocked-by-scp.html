@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS&rsquo;s own guardrail blocked my budget alerts | Sean Lennard Orias</title>
+  <meta name="description" content="Setting up a budget alert is the first thing you do on a new AWS account. On mine, AWS itself wouldn&rsquo;t let the alert reach me.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/notes/budget-alerts-blocked-by-scp">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AWS&rsquo;s own guardrail blocked my budget alerts | Sean Lennard Orias">
+  <meta property="og:description" content="Setting up a budget alert is the first thing you do on a new AWS account. On mine, AWS itself wouldn&rsquo;t let the alert reach me.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes" aria-current="page">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#notes">&larr; All notes</a>
+        <h1>AWS&rsquo;s own guardrail blocked my budget alerts</h1>
+        <p class="page-lead">Setting up a budget alert is the first thing you do on a new AWS account. On mine, AWS itself wouldn&rsquo;t let the alert reach me.</p>
+        <dl class="glance"><div><dt>Area</dt><dd>AWS &middot; Billing</dd></div><div><dt>Project</dt><dd><a href="../projects/aws-cloud-homelab.html">AWS cloud homelab</a></dd></div></dl>
+        
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <h2>What I saw</h2>
+        <p>I created a US$5 monthly budget with an email alert before building anything. The email recipient stayed at <strong>Inactive</strong>, and clicking <strong>Send verification</strong> failed with a message that I had no permission for <code>notifications-contacts:*</code>.</p>
+        <figure class="figure ">
+          <a href="../assets/img/aws/01-budget-details.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/01-budget-details.webp" alt="AWS Budgets details page" loading="lazy"></a>
+          <figcaption>The budget, with email verification at 0 of 1.</figcaption>
+        </figure>
+        <h2>Why it happened</h2>
+        <p>Since 30 September 2026, AWS Budgets verifies new email recipients before it sends to them. My account is one of AWS&rsquo;s new-style projects, which come with a service control policy (SCP) managed by AWS. That SCP has a <code>DenyNotificationContactsOperations</code> statement, so the verification call was denied above my account, no matter what my own permissions allowed.</p>
+        <h2>How I found it</h2>
+        <p>I matched the denied action in the error to the list of statements on AWS&rsquo;s page about the SCPs applied to projects. Retrying, or giving myself more IAM permissions, could never have worked: an SCP deny wins over any allow.</p>
+        <h2>The fix</h2>
+        <p>I sent the alerts through an SNS topic, <code>budget-alerts</code>, instead. Its access policy lets only AWS Budgets, for my account, publish to it. I subscribed my email to the topic, confirmed the subscription and sent a test message to prove alerts can actually reach me.</p>
+        <p class="callout"><strong>Lesson:</strong> a guardrail above the account can block a console button. When the deny comes from an SCP, look for another path, here SNS, instead of retrying.</p>
+        <nav class="next-up" aria-label="More"><span></span><a href="explicit-deny-from-above.html">An explicitDeny that wasn&rsquo;t in my policy &rarr;</a></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

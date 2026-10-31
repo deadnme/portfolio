@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" role="img" aria-labelledby="t d">
+  <title id="t">AWS cloud homelab architecture</title>
+  <desc id="d">Clients reach an Application Load Balancer through an internet gateway. The load balancer sends traffic to two EC2 web servers in an Auto Scaling group across two availability zones. The servers reach a private RDS PostgreSQL database, read settings from SSM Parameter Store, write backups to S3 and send metrics and logs to CloudWatch, which alarms by email through SNS. Admins connect with Session Manager, with no SSH.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1b2430"/></marker>
+    <marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5a6674"/></marker>
+    <style>
+      text{font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;fill:#1b2430}
+      .lbl{font-size:13px;font-weight:600;fill:#0a5f5e;letter-spacing:.02em}
+      .t{font-size:15px;font-weight:600}
+      .s{font-size:12.5px;fill:#5a6674}
+      .e{font-size:12px;fill:#1b2430}
+      .ed{font-size:12px;fill:#5a6674}
+      .box{fill:#fff;stroke:#1b2430;stroke-width:1.4}
+      .svc{fill:#fff;stroke:#0e7c7b;stroke-width:1.4}
+      .act{fill:#f4f6f8;stroke:#5a6674;stroke-width:1.2}
+      .ln{stroke:#1b2430;stroke-width:1.6;fill:none}
+      .dl{stroke:#5a6674;stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+    </style>
+  </defs>
+
+  <!-- Region -->
+  <rect x="200" y="16" width="760" height="608" rx="8" fill="#fbfcfd" stroke="#5a6674" stroke-width="1.2" stroke-dasharray="7 5"/>
+  <text x="218" y="40" class="lbl">AWS REGION · ap-southeast-2 (Sydney)</text>
+
+  <!-- VPC -->
+  <rect x="218" y="56" width="452" height="480" rx="6" fill="#ffffff" stroke="#0e7c7b" stroke-width="1.4"/>
+  <text x="234" y="78" class="lbl">VPC · 10.20.0.0/16</text>
+
+  <!-- IGW -->
+  <rect x="234" y="150" width="96" height="58" rx="4" class="box"/>
+  <text x="282" y="175" text-anchor="middle" class="t">Internet</text>
+  <text x="282" y="194" text-anchor="middle" class="t">gateway</text>
+
+  <!-- Public subnets -->
+  <rect x="350" y="92" width="304" height="258" rx="5" fill="#e6f2f1" stroke="#0e7c7b" stroke-width="1"/>
+  <text x="364" y="112" class="lbl">PUBLIC SUBNETS · AZ a + AZ b</text>
+  <rect x="366" y="124" width="272" height="56" rx="4" class="box"/>
+  <text x="502" y="148" text-anchor="middle" class="t">Application Load Balancer</text>
+  <text x="502" y="167" text-anchor="middle" class="s">HTTP :80 across 2 AZs</text>
+
+  <rect x="366" y="206" width="272" height="132" rx="4" fill="#ffffff" stroke="#1b2430" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="378" y="225" class="s">Auto Scaling group (self-healing)</text>
+  <rect x="378" y="236" width="120" height="90" rx="4" class="box"/>
+  <text x="438" y="260" text-anchor="middle" class="t">EC2 · AZ a</text>
+  <text x="438" y="280" text-anchor="middle" class="s">t4g.micro</text>
+  <text x="438" y="298" text-anchor="middle" class="s">nginx → app.py</text>
+  <rect x="506" y="236" width="120" height="90" rx="4" class="box"/>
+  <text x="566" y="260" text-anchor="middle" class="t">EC2 · AZ b</text>
+  <text x="566" y="280" text-anchor="middle" class="s">t4g.micro</text>
+  <text x="566" y="298" text-anchor="middle" class="s">nginx → app.py</text>
+
+  <!-- Private subnets -->
+  <rect x="350" y="400" width="304" height="122" rx="5" fill="#eef1f4" stroke="#5a6674" stroke-width="1"/>
+  <text x="364" y="420" class="lbl" style="fill:#5a6674">PRIVATE SUBNETS · no internet route</text>
+  <rect x="402" y="434" width="200" height="74" rx="4" class="box"/>
+  <text x="502" y="460" text-anchor="middle" class="t">RDS PostgreSQL 16</text>
+  <text x="502" y="480" text-anchor="middle" class="s">db.t4g.micro, single-AZ</text>
+  <text x="502" y="497" text-anchor="middle" class="s">not publicly reachable</text>
+
+  <!-- Regional services -->
+  <rect x="712" y="66" width="230" height="64" rx="4" class="svc"/>
+  <text x="726" y="92" class="t">SSM Parameter Store</text>
+  <text x="726" y="112" class="s">DB password as SecureString</text>
+
+  <rect x="712" y="150" width="230" height="64" rx="4" class="svc"/>
+  <text x="726" y="176" class="t">S3 backup bucket</text>
+  <text x="726" y="196" class="s">versioned; servers can't delete</text>
+
+  <rect x="712" y="234" width="230" height="64" rx="4" class="svc"/>
+  <text x="726" y="260" class="t">CloudWatch</text>
+  <text x="726" y="280" class="s">metrics, logs, 4 alarms, dashboard</text>
+
+  <rect x="712" y="330" width="230" height="56" rx="4" class="svc"/>
+  <text x="726" y="354" class="t">SNS topic</text>
+  <text x="726" y="373" class="s">harbor-alerts</text>
+
+  <rect x="712" y="452" width="230" height="64" rx="4" class="svc"/>
+  <text x="726" y="478" class="t">Session Manager</text>
+  <text x="726" y="498" class="s">SSM agent dials out</text>
+
+  <!-- Actors -->
+  <rect x="20" y="146" width="150" height="66" rx="33" class="act"/>
+  <text x="95" y="175" text-anchor="middle" class="t">Clients</text>
+  <text x="95" y="194" text-anchor="middle" class="s">on the internet</text>
+
+  <rect x="20" y="556" width="150" height="56" rx="28" class="act"/>
+  <text x="95" y="580" text-anchor="middle" class="t">Admin</text>
+  <text x="95" y="598" text-anchor="middle" class="s">aws login + MFA</text>
+
+  <rect x="980" y="330" width="122" height="56" rx="28" class="act"/>
+  <text x="1041" y="354" text-anchor="middle" class="t">Alert</text>
+  <text x="1041" y="372" text-anchor="middle" class="s">email</text>
+
+  <!-- Traffic -->
+  <path d="M170 179 H230" class="ln" marker-end="url(#a)"/>
+  <text x="176" y="170" class="e">HTTP</text>
+  <path d="M330 168 H362" class="ln" marker-end="url(#a)"/>
+  <path d="M502 180 V202" class="ln" marker-end="url(#a)"/>
+  <text x="510" y="197" class="e">ALB SG only</text>
+  <path d="M502 338 V430" class="ln" marker-end="url(#a)"/>
+  <rect x="510" y="368" width="140" height="22" fill="#ffffff"/>
+  <text x="514" y="384" class="e">TCP 5432, app SG only</text>
+
+  <!-- API calls (dashed) -->
+  <path d="M626 252 C670 252 670 98 708 98" class="dl" marker-end="url(#ad)"/>
+  <path d="M626 270 C676 270 676 182 708 182" class="dl" marker-end="url(#ad)"/>
+  <path d="M626 300 C680 300 680 266 708 266" class="dl" marker-end="url(#ad)"/>
+  <path d="M827 298 V326" class="ln" marker-end="url(#a)"/>
+  <text x="835" y="318" class="e">alarm</text>
+  <path d="M942 358 H976" class="ln" marker-end="url(#a)"/>
+
+  <!-- Admin path -->
+  <path d="M170 584 H690 C700 584 700 484 708 484" class="ln" marker-end="url(#a)"/>
+  <text x="236" y="576" class="e">no SSH, no port 22</text>
+
+  <!-- Legend -->
+  <path d="M712 548 H742" class="ln"/><text x="750" y="552" class="e">network traffic</text>
+  <path d="M712 570 H742" class="dl"/><text x="750" y="574" class="e">API call, instance role</text>
+</svg>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servers that failed to launch, then fixed themselves | Sean Lennard Orias</title>
+  <meta name="description" content="My first terraform apply of the web tier failed. The tempting fix was to tear it down and start again. The right fix was one command.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/notes/asg-launch-authentication-failure">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Servers that failed to launch, then fixed themselves | Sean Lennard Orias">
+  <meta property="og:description" content="My first terraform apply of the web tier failed. The tempting fix was to tear it down and start again. The right fix was one command.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes" aria-current="page">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#notes">&larr; All notes</a>
+        <h1>Servers that failed to launch, then fixed themselves</h1>
+        <p class="page-lead">My first <code>terraform apply</code> of the web tier failed. The tempting fix was to tear it down and start again. The right fix was one command.</p>
+        <dl class="glance"><div><dt>Area</dt><dd>AWS &middot; Auto Scaling</dd></div><div><dt>Project</dt><dd><a href="../projects/aws-cloud-homelab.html">AWS cloud homelab</a></dd></div></dl>
+        
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <h2>What I saw</h2>
+        <p><code>terraform apply</code> failed at <code>aws_autoscaling_group.app</code>, and Terraform marked the group as <em>tainted</em>, meaning it would destroy and recreate it on the next apply. The Auto Scaling activity history said: <code>Authentication Failure. Launching EC2 instance failed.</code></p>
+        
+        <h2>Why it happened</h2>
+        <p>IAM is eventually consistent. Terraform created the servers&rsquo; new instance profile and, seconds later, the Auto Scaling group that uses it. The group tried to launch servers before the new profile had reached EC2.</p>
+        <h2>How I found it</h2>
+        <p>Instead of re-running anything, I read the group&rsquo;s <strong>Activity</strong> tab: two failed launches, then two successful ones about a minute later. AWS had retried on its own and the group was already healthy. Only Terraform&rsquo;s record still said it was broken.</p>
+        <h2>The fix</h2>
+        <p><code>terraform untaint aws_autoscaling_group.app</code> told Terraform the group was fine after all. <code>terraform plan</code> then showed no changes.</p>
+        <p class="callout"><strong>Lesson:</strong> new IAM roles take a moment to propagate. Read the activity history before rebuilding something that may already have recovered.</p>
+        <nav class="next-up" aria-label="More"><a href="explicit-deny-from-above.html">&larr; An explicitDeny that wasn&rsquo;t in my policy</a><a href="helpdesk-could-reset-domain-admin.html">The help desk could reset a Domain Admin&rsquo;s password &rarr;</a></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

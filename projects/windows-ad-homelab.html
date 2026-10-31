@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Active Directory homelab | Sean Lennard Orias</title>
+  <meta name="description" content="Windows Server 2025 Active Directory for a fictional 20-person firm: OUs, AGDLP groups, file shares, Group Policy, delegation, six help desk tickets and the problems I fixed.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/projects/windows-ad-homelab">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Windows Active Directory homelab | Sean Lennard Orias">
+  <meta property="og:description" content="Windows Server 2025 Active Directory for a fictional 20-person firm: OUs, AGDLP groups, file shares, Group Policy, delegation, six help desk tickets and the problems I fixed.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#projects">&larr; All projects</a>
+        <h1>Windows Active Directory homelab</h1>
+        <p class="page-lead">The IT setup for Harbor Point Accounting, a fictional 20-person firm, on Windows Server 2025, followed by the day-to-day tickets a help desk or junior sysadmin would handle there.</p>
+        <dl class="glance"><div><dt>Type</dt><dd>Personal learning lab</dd></div><div><dt>Platform</dt><dd>VirtualBox, one server and one PC</dd></div><div><dt>Stack</dt><dd>Windows Server 2025, Windows 11, PowerShell</dd></div><div><dt>Result</dt><dd>6 tickets worked, 9 problems logged and fixed</dd></div></dl>
+        <div class="page-links"><a class="btn btn-primary" href="https://github.com/deadnme/windows-ad-homelab" target="_blank" rel="noopener noreferrer">Source and docs on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a><a class="btn btn-secondary" href="https://github.com/deadnme/windows-ad-homelab/blob/main/docs/11-troubleshooting-and-lessons.md" target="_blank" rel="noopener noreferrer">Full troubleshooting log<span class="visually-hidden"> (opens in a new tab)</span></a></div>
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <figure class="figure ">
+          <a href="../assets/img/ad/03-server-manager-dashboard.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/ad/03-server-manager-dashboard.webp" alt="Server Manager dashboard on DC01" loading="lazy"></a>
+          <figcaption>DC01 after all fixes: Active Directory, DHCP, DNS and file services all healthy.</figcaption>
+        </figure>
+
+        <h2>What I built</h2>
+        <ul>
+          <li><strong>Domain.</strong> A new forest, <code>harborpoint.internal</code>, on Windows Server 2025, with AD-integrated DNS zones, a reverse lookup zone and forwarders.</li>
+          <li><strong>DHCP.</strong> A scope for the office PCs with router, DNS and domain options, authorized in AD.</li>
+          <li><strong>Users and OUs.</strong> 20 staff in six department OUs, separate <code>adm.</code> accounts for IT in their own OU, and a Disabled Users OU for leavers.</li>
+          <li><strong>Groups.</strong> The AGDLP model: department groups go into share groups, and only share groups get folder permissions, so a staff change is a group change.</li>
+          <li><strong>File shares.</strong> One share per department that only that department can open, plus a public share for everyone.</li>
+          <li><strong>Group Policy.</strong> Password and lockout rules, idle screen lock, a logon banner and wallpaper, mapped drives by group, and USB storage blocked for Sales.</li>
+          <li><strong>Delegation.</strong> The help desk group can reset passwords and unlock accounts, and nothing else.</li>
+          <li><strong>Automation.</strong> PowerShell scripts for bulk user import, onboarding, offboarding and a stale-account report.</li>
+        </ul>
+
+        <h2>What an employee sees</h2>
+        <p>Rachel Kim, Sales Manager, signs in to the Windows 11 PC: company wallpaper, her <code>P:</code> and <code>S:</code> drives mapped by group, the Accounting share denied and Registry Editor blocked. All of it comes from Active Directory and Group Policy.</p>
+        <div class="gallery"><figure class="figure ">
+          <a href="../assets/img/ad/08-rachel-mapped-drives.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/ad/08-rachel-mapped-drives.webp" alt="File Explorer showing mapped P and S drives" loading="lazy"></a>
+          <figcaption>Drives mapped by group membership, with the company wallpaper.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/ad/08-rachel-verification.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/ad/08-rachel-verification.webp" alt="Command output verifying Rachel&#x27;s access" loading="lazy"></a>
+          <figcaption>Checking what she can and can&rsquo;t reach, as her.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/ad/05-aduc-ou-structure.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/ad/05-aduc-ou-structure.webp" alt="Active Directory Users and Computers OU tree" loading="lazy"></a>
+          <figcaption>Department OUs, with admin accounts kept apart.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/ad/05-aduc-groups.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/ad/05-aduc-groups.webp" alt="Security groups in Active Directory" loading="lazy"></a>
+          <figcaption>Department and share groups, following AGDLP.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/ad/07-gpmc-sales-linked-gpos.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/ad/07-gpmc-sales-linked-gpos.webp" alt="Group Policy Management console" loading="lazy"></a>
+          <figcaption>GPOs linked to the Sales OU, including the USB block.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/ad/09-aduc-disabled-users.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/ad/09-aduc-disabled-users.webp" alt="Disabled Users OU" loading="lazy"></a>
+          <figcaption>Leavers are disabled and moved, not deleted.</figcaption>
+        </figure></div>
+
+        <h2>Help desk tickets I worked</h2>
+        <ul>
+          <li><strong>Account lockout,</strong> traced to the PC that caused it with Security event 4740.</li>
+          <li><strong>Forgotten password,</strong> after verifying the caller: a one-time password from the delegated help desk account, with a change forced at next sign-in.</li>
+          <li><strong>New starter,</strong> created with the onboarding script after the request came from the manager.</li>
+          <li><strong>Leaver,</strong> disabled rather than deleted and removed from their groups, with the ticket number recorded on the account.</li>
+          <li><strong>Department move,</strong> where the user was still in his old department&rsquo;s group; fixed as a group change so share access followed.</li>
+          <li><strong>A PC missing the company sign-in message,</strong> because it sat in the default Computers container, which can&rsquo;t have GPOs linked.</li>
+        </ul>
+
+        <h2>What broke, and how I fixed it</h2>
+        <table class="fix-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Cause</th><th scope="col">Fix</th></tr></thead><tbody><tr><td data-label="Symptom"><strong>The help desk could reset a Domain Admin&rsquo;s password</strong></td><td data-label="Cause">Admin accounts sat in an OU covered by the help desk&rsquo;s delegation</td><td data-label="Fix">Moved them to their own OU and re-tested: access denied. <a href="../notes/helpdesk-could-reset-domain-admin.html">Write-up</a></td></tr><tr><td data-label="Symptom">New DC stuck on &ldquo;Applying computer settings&rdquo; for 15+ minutes</td><td data-label="Cause">DFS Replication failed at first boot, so SYSVOL was never initialised</td><td data-label="Fix">Restarted DFSR (event 4602), SYSVOL shared, sign-in completed</td></tr><tr><td data-label="Symptom">DC clock nine minutes behind</td><td data-label="Cause">The first DC had no reliable time source</td><td data-label="Fix">Configured an external NTP peer and resynced</td></tr><tr><td data-label="Symptom">Server Manager tiles all red</td><td data-label="Cause">A restart was pending after role installs and updates</td><td data-label="Fix">Rebooted; all green</td></tr><tr><td data-label="Symptom">Access-Based Enumeration didn&rsquo;t hide other departments&rsquo; shares</td><td data-label="Cause">ABE hides items inside a share, not share names</td><td data-label="Fix">Corrected my understanding and the docs</td></tr></tbody></table>
+
+        <h2>What I&rsquo;d add next</h2>
+        <ul>
+          <li>A second domain controller for redundancy and replication.</li>
+          <li>A separate file server instead of shares on the DC.</li>
+          <li>LAPS, so every PC&rsquo;s local admin password is unique.</li>
+          <li>Windows Server Backup and the AD Recycle Bin, and practising a restore.</li>
+        </ul>
+
+        <p class="callout">This is a learning lab, not production experience. I built it with AI assistance as a guided walkthrough, then studied each step, re-ran it and documented it in my own words.</p>
+        <nav class="next-up" aria-label="More"><a href="aws-cloud-homelab.html">&larr; AWS cloud homelab</a><a href="disaster-preparedness-game.html">Disaster preparedness game &rarr;</a></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

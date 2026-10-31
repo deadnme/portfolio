@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if (location.hostname.endsWith('github.io')) location.replace('https://seanorias.com' + location.pathname.replace(/^\/portfolio/, '') + location.search + location.hash);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS cloud homelab | Sean Lennard Orias</title>
+  <meta name="description" content="A client portal on AWS built with Terraform: VPC across two AZs, load balancer and Auto Scaling, private RDS PostgreSQL, S3 backups, CloudWatch alarms. Screenshots and what broke.">
+  <meta name="author" content="Sean Lennard Orias">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://seanorias.com/projects/aws-cloud-homelab">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AWS cloud homelab | Sean Lennard Orias">
+  <meta property="og:description" content="A client portal on AWS built with Terraform: VPC across two AZs, load balancer and Auto Scaling, private RDS PostgreSQL, S3 backups, CloudWatch alarms. Screenshots and what broke.">
+  <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#notes">Notes</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" download>Download CV</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-head">
+      <div class="container">
+        <a class="crumb" href="../index.html#projects">&larr; All projects</a>
+        <h1>AWS cloud homelab</h1>
+        <p class="page-lead">The client portal of Harbor Point Accounting, a fictional 20-person firm, moved from an office server to AWS and built with Terraform. I built it, broke it on purpose and fixed it the way a cloud support engineer would.</p>
+        <dl class="glance"><div><dt>Type</dt><dd>Personal learning lab</dd></div><div><dt>Built</dt><dd>October 2026</dd></div><div><dt>Stack</dt><dd>AWS, Terraform, Python, Bash, Docker</dd></div><div><dt>Running cost</dt><dd>About US$0.10 an hour, destroyed after every session</dd></div></dl>
+        <div class="page-links"><a class="btn btn-primary" href="https://github.com/deadnme/aws-cloud-homelab" target="_blank" rel="noopener noreferrer">Source and docs on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a><a class="btn btn-secondary" href="https://github.com/deadnme/aws-cloud-homelab/blob/main/docs/11-troubleshooting-and-lessons.md" target="_blank" rel="noopener noreferrer">Full troubleshooting log<span class="visually-hidden"> (opens in a new tab)</span></a></div>
+      </div>
+    </section>    <section class="prose-wrap" style="padding-top:0.5rem">
+      <div class="container prose">
+        
+        <figure class="figure figure--wide">
+          <a href="../assets/img/aws/architecture.svg" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/architecture.svg" alt="Architecture diagram of the AWS homelab" width="1120" height="640" loading="lazy"></a>
+          <figcaption>Solid lines are network traffic. Dashed lines are AWS API calls made with the servers&rsquo; instance role. Account-level guards (a US$5 budget alert and CloudTrail) are not drawn. Open the image for full size.</figcaption>
+        </figure>
+
+        <h2>What I built</h2>
+        <ul>
+          <li><strong>Network.</strong> One VPC across two availability zones. Public subnets hold the load balancer and web servers; private subnets for the database have no route to the internet.</li>
+          <li><strong>Web tier.</strong> Two Amazon Linux 2023 servers running nginx in front of a small Python app, in an Auto Scaling group behind an Application Load Balancer. A server that fails its health check is replaced automatically.</li>
+          <li><strong>Database.</strong> RDS PostgreSQL 16 in the private subnets. Only the web servers&rsquo; security group can reach port 5432, and the password lives in SSM Parameter Store as a SecureString, never in the code.</li>
+          <li><strong>Backups.</strong> A versioned, encrypted S3 bucket. The servers&rsquo; IAM role can upload and read backups but cannot delete them.</li>
+          <li><strong>Access.</strong> No SSH and no open port 22. I connect to the servers through Session Manager.</li>
+          <li><strong>Monitoring.</strong> The CloudWatch agent ships memory, disk and nginx logs. Four alarms (CPU, unhealthy targets, load balancer 5xx and disk) email me through SNS, and a dashboard shows it all in one place.</li>
+          <li><strong>Automation.</strong> A Python (boto3) script checks the account for risky settings, such as a security group open to the internet. The app also runs as a Docker image.</li>
+          <li><strong>CI.</strong> GitHub Actions runs <code>terraform fmt</code> and <code>validate</code> on every push, with no AWS credentials stored in GitHub.</li>
+        </ul>
+
+        <h2>Proof from my account</h2>
+        <p>Every screenshot is from my own AWS account. Select one to open it full size.</p>
+        <div class="gallery"><figure class="figure ">
+          <a href="../assets/img/aws/05-scaling-activities.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/05-scaling-activities.webp" alt="Auto Scaling activity history" loading="lazy"></a>
+          <figcaption>I terminated a server on purpose. Auto Scaling drained it from the load balancer and launched a replacement.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/aws/05-watch-window-all-200.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/05-watch-window-all-200.webp" alt="A loop of HTTP requests all returning 200" loading="lazy"></a>
+          <figcaption>A request every two seconds while that happened: every one still returned 200.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/aws/06-psql-from-app-server.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/06-psql-from-app-server.webp" alt="psql session from a web server" loading="lazy"></a>
+          <figcaption>Querying the private database from a web server through Session Manager, over TLS.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/aws/08-logs-insights-stats.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/08-logs-insights-stats.webp" alt="CloudWatch Logs Insights query results" loading="lazy"></a>
+          <figcaption>CloudWatch Logs Insights counting nginx requests by status and path.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/aws/07-policy-simulator.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/07-policy-simulator.webp" alt="IAM policy simulator output" loading="lazy"></a>
+          <figcaption>Upload allowed, delete denied, once I gave the simulator the Region it was missing.</figcaption>
+        </figure><figure class="figure ">
+          <a href="../assets/img/aws/09-report-open-sg.webp" target="_blank" rel="noopener noreferrer"><img src="../assets/img/aws/09-report-open-sg.webp" alt="Cloud health report output" loading="lazy"></a>
+          <figcaption>My health report flagging a test security group I opened to the internet on purpose.</figcaption>
+        </figure></div>
+
+        <h2>What broke, and how I fixed it</h2>
+        <p>This account turned out to be one of AWS&rsquo;s new-style accounts: one fixed Region, no root sign-in and guardrails set by AWS. The guide didn&rsquo;t expect that, so a few things broke. I logged nine problems in total; these are the ones worth reading.</p>
+        <table class="fix-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Cause</th><th scope="col">Fix</th></tr></thead><tbody><tr><td data-label="Symptom">Budget alert email stuck at <em>Inactive</em>; verifying it was denied</td><td data-label="Cause">A service control policy above my account blocks email-recipient verification</td><td data-label="Fix">Sent the alerts through an SNS topic instead. <a href="../notes/budget-alerts-blocked-by-scp.html">Write-up</a></td></tr><tr><td data-label="Symptom">First <code>terraform apply</code> failed: servers wouldn&rsquo;t launch</td><td data-label="Cause">The new IAM role hadn&rsquo;t reached EC2 yet</td><td data-label="Fix"><code>terraform untaint</code>, no rebuild. <a href="../notes/asg-launch-authentication-failure.html">Write-up</a></td></tr><tr><td data-label="Symptom">Policy simulator said <code>explicitDeny</code> for an upload that worked</td><td data-label="Cause">The Region rule above the account; the simulated request had no Region</td><td data-label="Fix">Added the Region as context. <a href="../notes/explicit-deny-from-above.html">Write-up</a></td></tr><tr><td data-label="Symptom">Terraform found no credentials in a new terminal</td><td data-label="Cause">The profile environment variable lasts one window</td><td data-label="Fix">Set it at the start of every session</td></tr></tbody></table>
+
+        <h2>What production would do differently</h2>
+        <p>Some choices were made to keep the lab cheap. I wrote down what a real deployment would change:</p>
+        <table class="fix-table"><thead><tr><th scope="col">This lab</th><th scope="col">Production</th><th scope="col">Why the lab differs</th></tr></thead><tbody><tr><td data-label="This lab">Web servers in public subnets, locked down by security groups</td><td data-label="Production">Private subnets plus a NAT Gateway or VPC endpoints</td><td data-label="Why the lab differs">A NAT Gateway costs about US$43 a month in Sydney</td></tr><tr><td data-label="This lab">Single-AZ database, 1-day backups</td><td data-label="Production">Multi-AZ, longer retention, deletion protection</td><td data-label="Why the lab differs">Doubles the database cost</td></tr><tr><td data-label="This lab">HTTP on the load balancer&rsquo;s own name</td><td data-label="Production">HTTPS with ACM and a Route 53 domain</td><td data-label="Why the lab differs">Needs a paid domain</td></tr><tr><td data-label="This lab">Local Terraform state</td><td data-label="Production">S3 backend with locking</td><td data-label="Why the lab differs">One person, one environment</td></tr></tbody></table>
+
+        <p class="callout">This is a learning lab, not production experience. The guide and code were written with AI assistance as a guided walkthrough; I set up the environment, ran every step myself, troubleshot what broke and wrote up what I found.</p>
+        <nav class="next-up" aria-label="More"><span></span><a href="windows-ad-homelab.html">Windows Active Directory homelab &rarr;</a></nav>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
+      <div class="footer-links">
+        <a href="mailto:sean@seanorias.com">Email</a>
+        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../assets/Sean_Lennard_Orias_CV.pdf" download>CV</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>
