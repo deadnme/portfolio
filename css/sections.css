@@ -33,7 +33,7 @@
 .cta-row .aside-links {
   display: flex;
   gap: 1.1rem;
-  margin-left: auto;
+  margin-left: 0.5rem;
   font-size: 0.95rem;
 }
 
