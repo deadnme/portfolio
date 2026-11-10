@@ -32,16 +32,16 @@
 
   <header class="site-header">
     <div class="container nav-shell">
-      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <a class="brand" href="/">Sean Lennard Orias</a>
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#experience">Experience</a></li>
-          <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
-          <li><a href="../index.html#notes">Notes</a></li>
-          <li><a href="../index.html#skills">Skills</a></li>
-          <li><a href="../index.html#certifications">Certifications</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#experience">Experience</a></li>
+          <li><a href="/#projects" aria-current="page">Projects</a></li>
+          <li><a href="/#notes">Notes</a></li>
+          <li><a href="/#skills">Skills</a></li>
+          <li><a href="/#certifications">Certifications</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
       <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" data-viewer="CV, Sean Lennard Orias" data-preview="../assets/img/viewer/cv.webp">View CV</a>
@@ -51,7 +51,7 @@
   <main id="main-content">
     <section class="page-head">
       <div class="container">
-        <a class="crumb" href="../index.html#projects">&larr; All projects</a>
+        <a class="crumb" href="/#projects">&larr; All projects</a>
         <h1>Windows Active Directory homelab</h1>
         <p class="page-lead">The IT setup for Harbor Point Accounting, a fictional 20-person firm, on Windows Server 2025, followed by the day-to-day tickets a help desk or junior sysadmin would handle there.</p>
         <dl class="glance"><div><dt>Type</dt><dd>Personal learning lab</dd></div><div><dt>Platform</dt><dd>VirtualBox, one server and one PC</dd></div><div><dt>Stack</dt><dd>Windows Server 2025, Windows 11, PowerShell</dd></div><div><dt>Result</dt><dd>6 tickets worked, 9 problems logged and fixed</dd></div></dl>
@@ -110,7 +110,7 @@
         </ul>
 
         <h2>What broke, and how I fixed it</h2>
-        <table class="fix-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Cause</th><th scope="col">Fix</th></tr></thead><tbody><tr><td data-label="Symptom"><strong>The help desk could reset a Domain Admin&rsquo;s password</strong></td><td data-label="Cause">Admin accounts sat in an OU covered by the help desk&rsquo;s delegation</td><td data-label="Fix">Moved them to their own OU and re-tested: access denied. <a href="../notes/helpdesk-could-reset-domain-admin.html">Write-up</a></td></tr><tr><td data-label="Symptom">New DC stuck on &ldquo;Applying computer settings&rdquo; for 15+ minutes</td><td data-label="Cause">DFS Replication failed at first boot, so SYSVOL was never initialised</td><td data-label="Fix">Restarted DFSR (event 4602), SYSVOL shared, sign-in completed</td></tr><tr><td data-label="Symptom">DC clock nine minutes behind</td><td data-label="Cause">The first DC had no reliable time source</td><td data-label="Fix">Configured an external NTP peer and resynced</td></tr><tr><td data-label="Symptom">Server Manager tiles all red</td><td data-label="Cause">A restart was pending after role installs and updates</td><td data-label="Fix">Rebooted; all green</td></tr><tr><td data-label="Symptom">Access-Based Enumeration didn&rsquo;t hide other departments&rsquo; shares</td><td data-label="Cause">ABE hides items inside a share, not share names</td><td data-label="Fix">Corrected my understanding and the docs</td></tr></tbody></table>
+        <table class="fix-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Cause</th><th scope="col">Fix</th></tr></thead><tbody><tr><td data-label="Symptom"><strong>The help desk could reset a Domain Admin&rsquo;s password</strong></td><td data-label="Cause">Admin accounts sat in an OU covered by the help desk&rsquo;s delegation</td><td data-label="Fix">Moved them to their own OU and re-tested: access denied. <a href="../notes/helpdesk-could-reset-domain-admin">Write-up</a></td></tr><tr><td data-label="Symptom">New DC stuck on &ldquo;Applying computer settings&rdquo; for 15+ minutes</td><td data-label="Cause">DFS Replication failed at first boot, so SYSVOL was never initialised</td><td data-label="Fix">Restarted DFSR (event 4602), SYSVOL shared, sign-in completed</td></tr><tr><td data-label="Symptom">DC clock nine minutes behind</td><td data-label="Cause">The first DC had no reliable time source</td><td data-label="Fix">Configured an external NTP peer and resynced</td></tr><tr><td data-label="Symptom">Server Manager tiles all red</td><td data-label="Cause">A restart was pending after role installs and updates</td><td data-label="Fix">Rebooted; all green</td></tr><tr><td data-label="Symptom">Access-Based Enumeration didn&rsquo;t hide other departments&rsquo; shares</td><td data-label="Cause">ABE hides items inside a share, not share names</td><td data-label="Fix">Corrected my understanding and the docs</td></tr></tbody></table>
 
         <h2>What I&rsquo;d add next</h2>
         <ul>
@@ -121,7 +121,7 @@
         </ul>
 
         <p class="callout">This is a learning lab, not production experience. I built it with AI assistance as a guided walkthrough, then studied each step, re-ran it and documented it in my own words.</p>
-        <nav class="next-up" aria-label="More"><a href="aws-cloud-homelab.html">&larr; AWS cloud homelab</a><a href="disaster-preparedness-game.html">Disaster preparedness game &rarr;</a></nav>
+        <nav class="next-up" aria-label="More"><a href="aws-cloud-homelab">&larr; AWS cloud homelab</a><a href="disaster-preparedness-game">Disaster preparedness game &rarr;</a></nav>
 
       </div>
     </section>

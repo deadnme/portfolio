@@ -32,16 +32,16 @@
 
   <header class="site-header">
     <div class="container nav-shell">
-      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <a class="brand" href="/">Sean Lennard Orias</a>
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#experience">Experience</a></li>
-          <li><a href="../index.html#projects">Projects</a></li>
-          <li><a href="../index.html#notes" aria-current="page">Notes</a></li>
-          <li><a href="../index.html#skills">Skills</a></li>
-          <li><a href="../index.html#certifications">Certifications</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#experience">Experience</a></li>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/#notes" aria-current="page">Notes</a></li>
+          <li><a href="/#skills">Skills</a></li>
+          <li><a href="/#certifications">Certifications</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
       <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" data-viewer="CV, Sean Lennard Orias" data-preview="../assets/img/viewer/cv.webp">View CV</a>
@@ -51,10 +51,10 @@
   <main id="main-content">
     <section class="page-head">
       <div class="container">
-        <a class="crumb" href="../index.html#notes">&larr; All notes</a>
+        <a class="crumb" href="/#notes">&larr; All notes</a>
         <h1>An explicitDeny that wasn&rsquo;t in my policy</h1>
         <p class="page-lead">The IAM policy simulator told me my web servers couldn&rsquo;t upload backups. They were uploading backups just fine.</p>
-        <dl class="glance"><div><dt>Area</dt><dd>AWS &middot; IAM</dd></div><div><dt>Project</dt><dd><a href="../projects/aws-cloud-homelab.html">AWS cloud homelab</a></dd></div></dl>
+        <dl class="glance"><div><dt>Area</dt><dd>AWS &middot; IAM</dd></div><div><dt>Project</dt><dd><a href="../projects/aws-cloud-homelab">AWS cloud homelab</a></dd></div></dl>
         
       </div>
     </section>    <section class="prose-wrap" style="padding-top:0.5rem">
@@ -73,7 +73,7 @@
         <h2>The fix</h2>
         <p>I re-ran the simulation with <code>--context-entries</code> setting <code>aws:RequestedRegion</code> to <code>ap-southeast-2</code>. Upload: <code>allowed</code>. Delete: <code>implicitDeny</code>. Exactly what the policy intended, and I didn&rsquo;t touch the role.</p>
         <p class="callout"><strong>Lesson:</strong> before editing a role because of an <code>explicitDeny</code>, check <code>OrganizationsDecisionDetail</code>. The deny may not be yours.</p>
-        <nav class="next-up" aria-label="More"><a href="budget-alerts-blocked-by-scp.html">&larr; AWS&rsquo;s own guardrail blocked my budget alerts</a><a href="asg-launch-authentication-failure.html">Servers that failed to launch, then fixed themselves &rarr;</a></nav>
+        <nav class="next-up" aria-label="More"><a href="budget-alerts-blocked-by-scp">&larr; AWS&rsquo;s own guardrail blocked my budget alerts</a><a href="asg-launch-authentication-failure">Servers that failed to launch, then fixed themselves &rarr;</a></nav>
 
       </div>
     </section>

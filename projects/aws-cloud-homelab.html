@@ -32,16 +32,16 @@
 
   <header class="site-header">
     <div class="container nav-shell">
-      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <a class="brand" href="/">Sean Lennard Orias</a>
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#experience">Experience</a></li>
-          <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
-          <li><a href="../index.html#notes">Notes</a></li>
-          <li><a href="../index.html#skills">Skills</a></li>
-          <li><a href="../index.html#certifications">Certifications</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#experience">Experience</a></li>
+          <li><a href="/#projects" aria-current="page">Projects</a></li>
+          <li><a href="/#notes">Notes</a></li>
+          <li><a href="/#skills">Skills</a></li>
+          <li><a href="/#certifications">Certifications</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
       <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" data-viewer="CV, Sean Lennard Orias" data-preview="../assets/img/viewer/cv.webp">View CV</a>
@@ -51,7 +51,7 @@
   <main id="main-content">
     <section class="page-head">
       <div class="container">
-        <a class="crumb" href="../index.html#projects">&larr; All projects</a>
+        <a class="crumb" href="/#projects">&larr; All projects</a>
         <h1>AWS cloud homelab</h1>
         <p class="page-lead">The client portal of Harbor Point Accounting, a fictional 20-person firm, moved from an office server to AWS and built with Terraform. I built it, broke it on purpose and fixed it the way a cloud support engineer would.</p>
         <dl class="glance"><div><dt>Type</dt><dd>Personal learning lab</dd></div><div><dt>Built</dt><dd>October 2026</dd></div><div><dt>Stack</dt><dd>AWS, Terraform, Python, Bash, Docker</dd></div><div><dt>Running cost</dt><dd>About US$0.10 an hour, destroyed after every session</dd></div></dl>
@@ -101,14 +101,14 @@
 
         <h2>What broke, and how I fixed it</h2>
         <p>This account turned out to be one of AWS&rsquo;s new-style accounts: one fixed Region, no root sign-in and guardrails set by AWS. The guide didn&rsquo;t expect that, so a few things broke. I logged nine problems in total; these are the ones worth reading.</p>
-        <table class="fix-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Cause</th><th scope="col">Fix</th></tr></thead><tbody><tr><td data-label="Symptom">Budget alert email stuck at <em>Inactive</em>; verifying it was denied</td><td data-label="Cause">A service control policy above my account blocks email-recipient verification</td><td data-label="Fix">Sent the alerts through an SNS topic instead. <a href="../notes/budget-alerts-blocked-by-scp.html">Write-up</a></td></tr><tr><td data-label="Symptom">First <code>terraform apply</code> failed: servers wouldn&rsquo;t launch</td><td data-label="Cause">The new IAM role hadn&rsquo;t reached EC2 yet</td><td data-label="Fix"><code>terraform untaint</code>, no rebuild. <a href="../notes/asg-launch-authentication-failure.html">Write-up</a></td></tr><tr><td data-label="Symptom">Policy simulator said <code>explicitDeny</code> for an upload that worked</td><td data-label="Cause">The Region rule above the account; the simulated request had no Region</td><td data-label="Fix">Added the Region as context. <a href="../notes/explicit-deny-from-above.html">Write-up</a></td></tr><tr><td data-label="Symptom">Terraform found no credentials in a new terminal</td><td data-label="Cause">The profile environment variable lasts one window</td><td data-label="Fix">Set it at the start of every session</td></tr></tbody></table>
+        <table class="fix-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Cause</th><th scope="col">Fix</th></tr></thead><tbody><tr><td data-label="Symptom">Budget alert email stuck at <em>Inactive</em>; verifying it was denied</td><td data-label="Cause">A service control policy above my account blocks email-recipient verification</td><td data-label="Fix">Sent the alerts through an SNS topic instead. <a href="../notes/budget-alerts-blocked-by-scp">Write-up</a></td></tr><tr><td data-label="Symptom">First <code>terraform apply</code> failed: servers wouldn&rsquo;t launch</td><td data-label="Cause">The new IAM role hadn&rsquo;t reached EC2 yet</td><td data-label="Fix"><code>terraform untaint</code>, no rebuild. <a href="../notes/asg-launch-authentication-failure">Write-up</a></td></tr><tr><td data-label="Symptom">Policy simulator said <code>explicitDeny</code> for an upload that worked</td><td data-label="Cause">The Region rule above the account; the simulated request had no Region</td><td data-label="Fix">Added the Region as context. <a href="../notes/explicit-deny-from-above">Write-up</a></td></tr><tr><td data-label="Symptom">Terraform found no credentials in a new terminal</td><td data-label="Cause">The profile environment variable lasts one window</td><td data-label="Fix">Set it at the start of every session</td></tr></tbody></table>
 
         <h2>What production would do differently</h2>
         <p>Some choices were made to keep the lab cheap. I wrote down what a real deployment would change:</p>
         <table class="fix-table"><thead><tr><th scope="col">This lab</th><th scope="col">Production</th><th scope="col">Why the lab differs</th></tr></thead><tbody><tr><td data-label="This lab">Web servers in public subnets, locked down by security groups</td><td data-label="Production">Private subnets plus a NAT Gateway or VPC endpoints</td><td data-label="Why the lab differs">A NAT Gateway costs about US$43 a month in Sydney</td></tr><tr><td data-label="This lab">Single-AZ database, 1-day backups</td><td data-label="Production">Multi-AZ, longer retention, deletion protection</td><td data-label="Why the lab differs">Doubles the database cost</td></tr><tr><td data-label="This lab">HTTP on the load balancer&rsquo;s own name</td><td data-label="Production">HTTPS with ACM and a Route 53 domain</td><td data-label="Why the lab differs">Needs a paid domain</td></tr><tr><td data-label="This lab">Local Terraform state</td><td data-label="Production">S3 backend with locking</td><td data-label="Why the lab differs">One person, one environment</td></tr></tbody></table>
 
         <p class="callout">This is a learning lab, not production experience. The guide and code were written with AI assistance as a guided walkthrough; I set up the environment, ran every step myself, troubleshot what broke and wrote up what I found.</p>
-        <nav class="next-up" aria-label="More"><span></span><a href="windows-ad-homelab.html">Windows Active Directory homelab &rarr;</a></nav>
+        <nav class="next-up" aria-label="More"><span></span><a href="windows-ad-homelab">Windows Active Directory homelab &rarr;</a></nav>
 
       </div>
     </section>

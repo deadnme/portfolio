@@ -32,16 +32,16 @@
 
   <header class="site-header">
     <div class="container nav-shell">
-      <a class="brand" href="../index.html">Sean Lennard Orias</a>
+      <a class="brand" href="/">Sean Lennard Orias</a>
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#experience">Experience</a></li>
-          <li><a href="../index.html#projects">Projects</a></li>
-          <li><a href="../index.html#notes" aria-current="page">Notes</a></li>
-          <li><a href="../index.html#skills">Skills</a></li>
-          <li><a href="../index.html#certifications">Certifications</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#experience">Experience</a></li>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/#notes" aria-current="page">Notes</a></li>
+          <li><a href="/#skills">Skills</a></li>
+          <li><a href="/#certifications">Certifications</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
       <a href="../assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary btn-small nav-cta" data-viewer="CV, Sean Lennard Orias" data-preview="../assets/img/viewer/cv.webp">View CV</a>
@@ -51,10 +51,10 @@
   <main id="main-content">
     <section class="page-head">
       <div class="container">
-        <a class="crumb" href="../index.html#notes">&larr; All notes</a>
+        <a class="crumb" href="/#notes">&larr; All notes</a>
         <h1>The help desk could reset a Domain Admin&rsquo;s password</h1>
         <p class="page-lead">I gave the help desk the right to reset passwords and nothing else. Testing what it <em>couldn&rsquo;t</em> do showed it could take over the domain.</p>
-        <dl class="glance"><div><dt>Area</dt><dd>Active Directory</dd></div><div><dt>Project</dt><dd><a href="../projects/windows-ad-homelab.html">Windows AD homelab</a></dd></div></dl>
+        <dl class="glance"><div><dt>Area</dt><dd>Active Directory</dd></div><div><dt>Project</dt><dd><a href="../projects/windows-ad-homelab">Windows AD homelab</a></dd></div></dl>
         
       </div>
     </section>    <section class="prose-wrap" style="padding-top:0.5rem">
@@ -71,7 +71,7 @@
         <p>A dedicated <strong>Admin Accounts</strong> OU outside any help desk delegation, and the admin accounts moved into it. Then I re-tested as Maya:</p><pre><code>PS&gt; Set-ADAccountPassword adm.ethan.brooks -Reset ... -Credential $maya
 Denied: Access is denied</code></pre><p>My user-creation script now puts admin accounts in that OU from the start.</p>
         <p class="callout"><strong>Lesson:</strong> delegation flows down to everything in the OU. Keep privileged accounts in their own OU, and test what the help desk <em>can&rsquo;t</em> do as well as what it can.</p>
-        <nav class="next-up" aria-label="More"><a href="asg-launch-authentication-failure.html">&larr; Servers that failed to launch, then fixed themselves</a><span></span></nav>
+        <nav class="next-up" aria-label="More"><a href="asg-launch-authentication-failure">&larr; Servers that failed to launch, then fixed themselves</a><span></span></nav>
 
       </div>
     </section>
