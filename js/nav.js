@@ -23,7 +23,25 @@
     links.forEach(function (l) { l.removeAttribute('aria-current'); });
   }
 
+  // A clicked menu link marks itself, and scroll tracking pauses until the jump
+  // ends: near the bottom of the page the browser cannot scroll a short section
+  // to the top, so the position alone would mark the wrong link.
+  var locked = false;
+  var unlockTimer;
+  function unlock() { locked = false; clearTimeout(unlockTimer); }
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
+      clear();
+      link.setAttribute('aria-current', 'true');
+      locked = true;
+      clearTimeout(unlockTimer);
+      unlockTimer = setTimeout(unlock, 1500); // fallback where scrollend is missing
+    });
+  });
+  window.addEventListener('scrollend', unlock);
+
   var observer = new IntersectionObserver(function (entries) {
+    if (locked) return;
     entries.forEach(function (entry) {
       if (!entry.isIntersecting || footerInView()) return;
       var link = map[entry.target.id];
@@ -35,8 +53,9 @@
 
   sections.forEach(function (s) { observer.observe(s); });
 
-  // The footer (Contact) is too short to reach the observer's mid-screen band,
-  // so the last link wins once the footer's top is in the upper half of the screen.
+  // When scrolling by hand: the footer (Contact) is too short to reach the
+  // observer's mid-screen band, so the last link wins at the bottom of the page
+  // or once the footer's top is in the upper half of the screen.
   var last = links[links.length - 1];
   var footer = sections[sections.length - 1];
   function footerInView() {
@@ -45,6 +64,7 @@
       (atBottom || footer.getBoundingClientRect().top <= window.innerHeight / 2);
   }
   window.addEventListener('scroll', function () {
+    if (locked) return;
     if (footerInView()) {
       clear();
       last.setAttribute('aria-current', 'true');
