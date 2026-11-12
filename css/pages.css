@@ -372,3 +372,22 @@
 .notes p code { overflow-wrap: anywhere; }
 
 .hero { padding-bottom: 1.5rem; }
+
+/* Sub-headings in the pixel face, regular weight (the face has one weight):
+   role titles, project card titles, About points, Notes and Skills titles. */
+
+.role-head h3,
+.card h3,
+.habits strong,
+.notes a,
+.skill-rows dt {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.role-head h3 { font-size: 1.4rem; }
+.card h3 { font-size: 1.3rem; }
+.habits strong,
+.notes a,
+.skill-rows dt { font-size: 1.12rem; }
