@@ -55,7 +55,7 @@
 .sheet dt {
   font-family: var(--font-display);
   font-weight: 600;
-  color: var(--accent);
+  color: var(--ink);
   letter-spacing: -0.01em;
 }
 
@@ -73,8 +73,9 @@
 .chips li {
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius);
-  background: var(--accent-soft);
-  color: var(--accent-ink);
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--rule);
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -102,7 +103,7 @@
   gap: 0.55rem;
 }
 
-.bullets li::marker { color: var(--accent); }
+.bullets li::marker { color: var(--ink); }
 
 
 /* Small logos inside links (Email, LinkedIn, GitHub) */
