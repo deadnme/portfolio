@@ -4,3 +4,22 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
+
+# Keep files out of search results (pages still link to them; noindex needs
+# them crawlable, so robots.txt must not block these paths).
+/assets/Sean_Lennard_Orias_CV.pdf
+  X-Robots-Tag: noindex
+/assets/Sean_Lennard_Orias_CV.docx
+  X-Robots-Tag: noindex
+/assets/CCSA-Certificate.pdf
+  X-Robots-Tag: noindex
+/assets/DatabasesCertificate.pdf
+  X-Robots-Tag: noindex
+/assets/GoogleCybersecCert.pdf
+  X-Robots-Tag: noindex
+/assets/Orias_AI_Essentials.pdf
+  X-Robots-Tag: noindex
+/assets/SAPCertificate.pdf
+  X-Robots-Tag: noindex
+/assets/img/*
+  X-Robots-Tag: noindex
