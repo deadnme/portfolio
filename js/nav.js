@@ -35,7 +35,7 @@
       link.setAttribute('aria-current', 'true');
       locked = true;
       clearTimeout(unlockTimer);
-      unlockTimer = setTimeout(unlock, 1500); // fallback where scrollend is missing
+      unlockTimer = setTimeout(unlock, 2500); // fallback where scrollend is missing
     });
   });
   window.addEventListener('scrollend', unlock);
