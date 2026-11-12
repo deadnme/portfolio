@@ -52,13 +52,13 @@
 
 .card:hover {
   border-color: var(--accent);
-  box-shadow: 0 6px 18px rgba(27, 36, 48, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .card-media {
   display: block;
   aspect-ratio: 16 / 10;
-  background: #f4f6f8;
+  background: #f4f4f4;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -245,7 +245,7 @@
 .prose li::marker { color: var(--ink); }
 
 .prose code {
-  background: #f4f6f8;
+  background: #f4f4f4;
   padding: 0.05rem 0.3rem;
   border-radius: 3px;
 }
@@ -354,8 +354,8 @@
   margin: 1rem 0;
   padding: 0.9rem 1rem;
   overflow-x: auto;
-  background: #1b2430;
-  color: #e9eef3;
+  background: #111111;
+  color: #eeeeee;
   border-radius: 6px;
   font-size: 0.88rem;
   line-height: 1.5;

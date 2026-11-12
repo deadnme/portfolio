@@ -3,9 +3,9 @@
   --ink: #111111;
   --muted: #666666;
   --rule: #dddddd;
-  --accent: #0e7c7b;
-  --accent-ink: #0a5f5e;
-  --status: #1f9d55;
+  --accent: #111111;
+  --accent-ink: #666666;
+  --status: #1f9d55; /* status pill dot: green = open to work; use red (#d93025) once employed */
   --max-width: 860px;
   --radius: 4px;
   --font-pixel: "Geist Pixel", ui-monospace, "Cascadia Code", Consolas, monospace;

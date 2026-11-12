@@ -22,7 +22,7 @@
 }
 
 .btn-primary:hover {
-  background: var(--accent);
+  background: var(--muted);
   color: var(--paper);
 }
 
@@ -140,7 +140,7 @@ body:has(.doc-viewer[open]) { overflow: hidden; }
   flex-direction: column;
 }
 
-.doc-viewer::backdrop { background: rgb(15 20 28 / 0.7); }
+.doc-viewer::backdrop { background: rgb(0 0 0 / 0.7); }
 
 .doc-viewer-bar {
   display: flex;
@@ -173,7 +173,7 @@ body:has(.doc-viewer[open]) { overflow: hidden; }
   flex: 1;
   min-height: 0;
   overflow: auto;
-  background: #e9edf1;
+  background: #eeeeee;
 }
 
 .doc-viewer-body iframe {
