@@ -22,14 +22,16 @@
   <meta property="og:image" content="https://seanorias.com/assets/img/og-card.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css?v=2">
-  <link rel="stylesheet" href="css/sections.css?v=2">
-  <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="preload" href="assets/fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-pixel-square.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css?v=3">
+  <link rel="stylesheet" href="css/tokens.css?v=3">
+  <link rel="stylesheet" href="css/base.css?v=3">
+  <link rel="stylesheet" href="css/layout.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=3">
+  <link rel="stylesheet" href="css/sections.css?v=3">
+  <link rel="stylesheet" href="css/pages.css?v=3">
+  <link rel="stylesheet" href="css/responsive.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -61,6 +63,7 @@
   <header class="site-header">
     <div class="container nav-shell">
       <a class="brand" href="#top">Sean Lennard Orias</a>
+      <p class="status-pill"><span class="status-dot" aria-hidden="true"></span>Open to work &middot; Metro Manila / Remote</p>
       <nav aria-label="Primary">
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
@@ -96,7 +99,8 @@
         </ul>
 
         <div class="cta-row">
-          <a href="assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary" data-viewer="CV, Sean Lennard Orias" data-preview="assets/img/viewer/cv.webp">View CV</a>
+          <a href="assets/Sean_Lennard_Orias_CV.pdf" class="btn btn-primary" data-viewer="CV, Sean Lennard Orias" data-preview="assets/img/viewer/cv.webp">View CV <span aria-hidden="true">&rarr;</span></a>
+          <a href="#projects" class="text-link">See projects <span aria-hidden="true">&rarr;</span></a>
           <div class="aside-links">
             <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin"/></svg>LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
             <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github"/></svg>GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
@@ -251,23 +255,23 @@
         <p class="section-intro">Short write-ups of problems I actually hit, in the same style as the knowledge-base articles I wrote at work.</p>
         <ul class="notes">
           <li>
-            <span class="note-tag">AWS &middot; Billing</span>
             <a href="notes/budget-alerts-blocked-by-scp">AWS&rsquo;s own guardrail blocked my budget alerts</a>
+            <span class="note-tag">AWS &middot; Billing</span>
             <p>A service control policy denied email verification for budget alerts, so I routed them through an SNS topic instead.</p>
           </li>
           <li>
-            <span class="note-tag">AWS &middot; IAM</span>
             <a href="notes/explicit-deny-from-above">An explicitDeny that wasn&rsquo;t in my policy</a>
+            <span class="note-tag">AWS &middot; IAM</span>
             <p>Why the IAM policy simulator denied an upload that worked for real, and the field that pointed above the account.</p>
           </li>
           <li>
-            <span class="note-tag">AWS &middot; Auto Scaling</span>
             <a href="notes/asg-launch-authentication-failure">Servers that failed to launch, then fixed themselves</a>
+            <span class="note-tag">AWS &middot; Auto Scaling</span>
             <p>IAM eventual consistency, the Auto Scaling activity log, and <code>terraform untaint</code> instead of a rebuild.</p>
           </li>
           <li>
-            <span class="note-tag">Active Directory</span>
             <a href="notes/helpdesk-could-reset-domain-admin">The help desk could reset a Domain Admin&rsquo;s password</a>
+            <span class="note-tag">Active Directory</span>
             <p>How a delegation on the wrong OU reached an admin account, why AdminSDHolder didn&rsquo;t save me, and the fix.</p>
           </li>
         </ul>
@@ -358,33 +362,29 @@
       </div>
     </section>
 
-    <section id="contact">
-      <div class="container">
-        <div class="section-head"><h2>Contact</h2></div>
-        <p class="section-intro">I am open to systems administration, technical support and entry-level cloud roles, on-site or remote. Email is the fastest way to reach me.</p>
-        <dl class="sheet contact-sheet">
-          <dt>Email</dt>
-          <dd><a href="mailto:sean@seanorias.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#email"/></svg>sean@seanorias.com</a><br><a href="mailto:seanoriasx@gmail.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#email"/></svg>seanoriasx@gmail.com</a></dd>
-          <dt>LinkedIn</dt>
-          <dd><a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin"/></svg>linkedin.com/in/sean-orias-67763924a<span class="visually-hidden"> (opens in a new tab)</span></a></dd>
-          <dt>GitHub</dt>
-          <dd><a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github"/></svg>github.com/deadnme<span class="visually-hidden"> (opens in a new tab)</span></a></dd>
-          <dt>CV</dt>
-          <dd><a href="assets/Sean_Lennard_Orias_CV.pdf" data-viewer="CV, Sean Lennard Orias" data-preview="assets/img/viewer/cv.webp">View CV (PDF)</a></dd>
-        </dl>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="container footer-shell">
-      <p>Sean Lennard Orias, <span id="footer-year"></span></p>
-      <div class="footer-links">
-        <a href="mailto:sean@seanorias.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#email"/></svg>Email</a>
-        <a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin"/></svg>LinkedIn</a>
-        <a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github"/></svg>GitHub</a>
-        <a href="assets/Sean_Lennard_Orias_CV.pdf" data-viewer="CV, Sean Lennard Orias" data-preview="assets/img/viewer/cv.webp">CV</a>
+      <p class="footer-intro">I am open to systems administration, technical support and entry-level cloud roles, on-site or remote. Email is the fastest way to reach me.</p>
+      <div class="footer-cols">
+        <div>
+          <h2 class="footer-head">Contact</h2>
+          <ul class="footer-list">
+            <li><a href="mailto:sean@seanorias.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#email"/></svg>sean@seanorias.com</a></li>
+            <li><a href="mailto:seanoriasx@gmail.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#email"/></svg>seanoriasx@gmail.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-head">Links</h2>
+          <ul class="footer-list">
+            <li><a href="https://github.com/deadnme" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github"/></svg>GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+            <li><a href="https://www.linkedin.com/in/sean-orias-67763924a/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin"/></svg>LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+            <li><a href="assets/Sean_Lennard_Orias_CV.pdf" data-viewer="CV, Sean Lennard Orias" data-preview="assets/img/viewer/cv.webp">CV</a></li>
+          </ul>
+        </div>
       </div>
+      <p class="footer-meta">Sean Lennard Orias, <span id="footer-year"></span></p>
     </div>
   </footer>
 

@@ -15,11 +15,37 @@
 
 .nav-shell {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  min-height: 64px;
-  padding: 0.6rem 0;
+  gap: 0.35rem 1rem;
+  padding: 0.7rem 0 0.4rem;
+}
+
+.nav-shell nav {
+  order: 3;
+  width: 100%;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  max-width: none;
+}
+
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--status);
+  flex: none;
 }
 
 .brand {
@@ -57,7 +83,7 @@
   border-bottom-color: var(--accent);
 }
 
-.nav-cta { flex: none; }
+.nav-cta { flex: none; margin-left: auto; }
 
 /* Page rhythm */
 
@@ -75,6 +101,9 @@ section { padding: 2.75rem 0; }
 }
 
 .section-head h2 {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  letter-spacing: 0;
   font-size: 1.6rem;
   flex: none;
 }
@@ -91,25 +120,49 @@ section { padding: 2.75rem 0; }
   margin: -0.75rem 0 1.75rem;
 }
 
-/* Footer */
+/* Footer: the contact area */
 
 .site-footer {
-  padding: 1.5rem 0 2.5rem;
+  padding: 0.5rem 0 2.5rem;
   color: var(--muted);
   font-size: 0.95rem;
 }
 
 .footer-shell {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding-top: 1.25rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--rule);
 }
 
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.1rem;
+.footer-intro {
+  color: var(--ink);
+  font-size: 1.05rem;
+  margin-bottom: 1.75rem;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 2.5rem;
+}
+
+.footer-head {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.footer-list {
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.footer-list a { overflow-wrap: anywhere; }
+
+.footer-meta {
+  margin-top: 2rem;
+  font-size: 0.85rem;
 }

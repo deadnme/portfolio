@@ -1,8 +1,12 @@
 /* Hero */
 
 .hero h1 {
+  font-family: var(--font-pixel);
+  font-weight: 400;
   font-size: clamp(2.4rem, 5vw, 3.6rem);
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  min-width: 0;
   line-height: 1.02;
   margin-bottom: 0.6rem;
 }
@@ -30,12 +34,23 @@
   margin-bottom: 2.5rem;
 }
 
+.text-link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.text-link:hover { text-decoration: underline; }
+
 .cta-row .aside-links {
   display: flex;
   gap: 1.1rem;
   margin-left: 0.5rem;
   font-size: 0.95rem;
 }
+
+.cta-row .aside-links a { color: var(--muted); }
+
+.cta-row .aside-links a:hover { color: var(--accent); }
 
 /* About */
 
@@ -142,6 +157,3 @@
 
 .cert-link { text-align: right; }
 
-/* Contact */
-
-.contact-sheet { row-gap: 0.9rem; }

@@ -123,59 +123,60 @@
   font-size: 0.92rem;
 }
 
-/* Notes list */
+/* Notes and Skills: two-column grid, each item a teal dot, a bold title and a line under it */
 
-.notes { list-style: none; }
-
-.notes li {
+.notes,
+.skill-rows {
+  list-style: none;
   display: grid;
-  grid-template-columns: 7.5rem minmax(0, 1fr);
-  gap: 0.25rem 1.5rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--rule);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 2.5rem;
+}
+
+.notes li,
+.skill-rows > div {
+  position: relative;
+  padding-left: 1.15rem;
   max-width: none;
+  min-width: 0;
 }
 
-.notes li:first-child { border-top: 1px solid var(--rule); }
-
-.notes .note-tag {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent-ink);
-  padding-top: 0.2rem;
+.notes li::before,
+.skill-rows > div::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
-.notes a {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.08rem;
+.notes a,
+.skill-rows dt {
+  display: block;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.35;
   color: var(--ink);
   text-decoration: none;
 }
 
-.notes a:hover { color: var(--accent-ink); text-decoration: underline; }
+.notes a:hover { color: var(--accent); text-decoration: underline; }
 
-.notes p {
-  grid-column: 2;
+.notes .note-tag {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.notes p,
+.skill-rows dd {
+  margin-top: 0.3rem;
   color: var(--muted);
   font-size: 0.95rem;
-}
-
-/* Skills sheet built from rows so it can be reordered */
-
-.skill-rows { display: grid; gap: 0.7rem; }
-
-.skill-rows > div {
-  display: grid;
-  grid-template-columns: 13rem minmax(0, 1fr);
-  column-gap: 1.5rem;
-}
-
-.skill-rows dt {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: -0.01em;
 }
 
 /* Sub-pages: case studies and notes */
@@ -327,11 +328,8 @@
 
   .cards { grid-template-columns: 1fr; }
 
-
-  .notes li { grid-template-columns: 1fr; }
-  .notes p { grid-column: 1; }
-
-  .skill-rows > div { grid-template-columns: 1fr; row-gap: 0.15rem; }
+  .notes,
+  .skill-rows { grid-template-columns: 1fr; }
 
   .page-head { padding: 2rem 0 1rem; }
   .glance { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -4,6 +4,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.4em;
   min-height: 44px;
   padding: 0.6rem 1.1rem;
   border-radius: var(--radius);
@@ -16,13 +17,13 @@
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #fff;
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .btn-primary:hover {
-  background: var(--accent-ink);
-  color: #fff;
+  background: var(--accent);
+  color: var(--paper);
 }
 
 .btn-secondary {
