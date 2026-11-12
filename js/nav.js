@@ -25,7 +25,7 @@
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
+      if (!entry.isIntersecting || footerInView()) return;
       var link = map[entry.target.id];
       if (!link) return;
       clear();
@@ -34,6 +34,32 @@
   }, { rootMargin: '-45% 0px -50% 0px' });
 
   sections.forEach(function (s) { observer.observe(s); });
+
+  // The footer (Contact) is too short to reach the observer's mid-screen band,
+  // so the last link wins once the footer's top is in the upper half of the screen.
+  var last = links[links.length - 1];
+  var footer = sections[sections.length - 1];
+  function footerInView() {
+    var atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+    return footer.id === last.getAttribute('href').slice(1) &&
+      (atBottom || footer.getBoundingClientRect().top <= window.innerHeight / 2);
+  }
+  window.addEventListener('scroll', function () {
+    if (footerInView()) {
+      clear();
+      last.setAttribute('aria-current', 'true');
+    } else if (last.hasAttribute('aria-current')) {
+      // Scrolled back up: hand the mark to the section under the middle of the screen.
+      var mid = window.innerHeight / 2;
+      sections.forEach(function (s) {
+        var r = s.getBoundingClientRect();
+        if (r.top <= mid && r.bottom > mid && map[s.id]) {
+          clear();
+          map[s.id].setAttribute('aria-current', 'true');
+        }
+      });
+    }
+  }, { passive: true });
 })();
 
 /* Document viewer: links with data-viewer open the PDF over a dimmed page instead of
